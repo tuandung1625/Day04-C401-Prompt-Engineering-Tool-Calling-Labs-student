@@ -1,7 +1,7 @@
 {
-  "run_id": "v2_B_base_openrouter_20260602T144856498543",
-  "version": "v2",
-  "artifact_version": "v2+p83a963176808+t6cdb53d5d7b8",
+  "run_id": "v1_B_base_openrouter_20260602T151524319384",
+  "version": "v1",
+  "artifact_version": "v1+p83a963176808+t6cdb53d5d7b8",
   "prompt_hash": "83a9631768081f9912b9bda12de845f3ea5fc6e41f41aac9122b06a7815df6e8",
   "tools_hash": "6cdb53d5d7b8de80d60b298b1357f462cedbedfae261d5ba60b08ccc401687c5",
   "phase": "B",
@@ -14,7 +14,7 @@
   "dataset_id": "day04_v2_research_base",
   "dataset_role": "base",
   "description": "Core eval cho research agent: routing đúng tool + đúng args, hỏi lại khi thiếu (ask_user), xác nhận trước khi gửi, và xử lý câu ngoài phạm vi / không cần tool. Chấm trên tool_calls + args (subset). KHÔNG sửa file này — chỉ thêm case vào eval_group.json.",
-  "generated_at": "2026-06-02T14:48:56",
+  "generated_at": "2026-06-02T15:15:24",
   "summary": {
     "total_cases": 20,
     "measured_cases": 20,
@@ -25,7 +25,8 @@
     "argument_accuracy": 0.9,
     "multiturn_accuracy": 1.0,
     "failure_counts": {
-      "missing_info": 2
+      "missing_info": 1,
+      "wrong_boundary": 1
     },
     "observed_mismatch_counts": {
       "wrong_arg_value": 2
@@ -91,9 +92,9 @@
                 "source": "@sama",
                 "date": "Mon Jun 01 21:36:34 +0000 2026",
                 "metrics": {
-                  "favorites": 1651,
-                  "retweets": 129,
-                  "views": "237373"
+                  "favorites": 1680,
+                  "retweets": 132,
+                  "views": "241396"
                 }
               }
             ]
@@ -130,6 +131,7 @@
             "name": "social_search",
             "args": {
               "query": "GPT-5",
+              "search_type": "Latest",
               "limit": 5
             }
           }
@@ -145,6 +147,7 @@
           "tool": "social_search",
           "args": {
             "query": "GPT-5",
+            "search_type": "Latest",
             "limit": 5
           },
           "result": {
@@ -153,63 +156,63 @@
             "search_type": "Latest",
             "items": [
               {
-                "title": "【衝撃】",
-                "summary": "【衝撃】\n284Bパラメータのモデルがなんとラズパイ5（8GB）で動いた😳\n\n1トークン/秒以上、消費電力8W\n正直安すぎて引く👇\n\nhttps://t.co/NnsbTjxSMJ\n\n・antirezのGGUFをそのまま使用\n・160回以上の試行を経て最適化\n・GPT-5.5とOpus 4.8 maxで設計を詰めた\n・5日間で達成\n\n今まで「AIに記憶を持たせる」はクラウド前提だった。\nVaultの中身を渡す、セッションをつなげる、全部ネット経由。\n\n8Wで動くローカルモデルが現実になってくると、\nObsidianのデータをどこにもAPIで送らずに\n手元のAIが自分のノートを文脈として持てる。\n\n記憶設計の起点が、手元に来る。\n\nローカルAI × Obsidianの組み合わせは今後強いと思う",
-                "url": "https://x.com/ObsidianOtaku/status/2061715692765000026",
-                "source": "@ObsidianOtaku",
-                "date": "Tue Jun 02 07:45:00 +0000 2026",
+                "title": "@onixiri haii aku jual chat gpt plus kak. sehari 4.5k, 3 hari 9k, 5 hari 14k, 7 hari 17k. sharing yaa. gercep prosesnya ",
+                "summary": "@onixiri haii aku jual chat gpt plus kak. sehari 4.5k, 3 hari 9k, 5 hari 14k, 7 hari 17k. sharing yaa. gercep prosesnya karena aku yg pegang akunnya",
+                "url": "https://x.com/echan_nct/status/2061723020805410865",
+                "source": "@echan_nct",
+                "date": "Tue Jun 02 08:14:07 +0000 2026",
                 "metrics": {
                   "favorites": 0,
                   "retweets": 0,
-                  "views": "8"
+                  "views": null
                 }
               },
               {
-                "title": "常々理解ができることと納得ができることは別だと思ってて、GPTの5以降のユーザーを危険因子として疑い続ける挙動は裁判起こされてるのを見たりするに仕方ないのだと理解はするけど、1ユーザーとしてはダメなやつのためにこっちが不利益を被る調整は納得",
-                "summary": "常々理解ができることと納得ができることは別だと思ってて、GPTの5以降のユーザーを危険因子として疑い続ける挙動は裁判起こされてるのを見たりするに仕方ないのだと理解はするけど、1ユーザーとしてはダメなやつのためにこっちが不利益を被る調整は納得はいかなーい！！ってずっとむーむーしている",
-                "url": "https://x.com/yui_GPT_partner/status/2061715058225480165",
-                "source": "@yui_GPT_partner",
-                "date": "Tue Jun 02 07:42:29 +0000 2026",
-                "metrics": {
-                  "favorites": 2,
-                  "retweets": 0,
-                  "views": "27"
-                }
-              },
-              {
-                "title": "5 years ago, programming creators talked about:",
-                "summary": "5 years ago, programming creators talked about:\n> reactjs\n> databases\n> system design\n> javascript\n\ntoday they talk about:\n> claude\n> GPT updates\n> AI agents\n> MCP\n> vibe coding\n\ni don’t blame them.\n\nbecause AI content gets the views.\n\nit does make me wonder…\n\nif fewer creators are teaching programming, who teaches the next generation of programmers?",
-                "url": "https://x.com/raunakhajela/status/2061714927430386093",
-                "source": "@raunakhajela",
-                "date": "Tue Jun 02 07:41:58 +0000 2026",
+                "title": "@saturnuss88 haiii aku jual chat chat gpt plus kakk. sehari cuma 4.5k, 3 hari 9k, 5 hari 14k, 7 hari 17k, yukk wa aku di",
+                "summary": "@saturnuss88 haiii aku jual chat chat gpt plus kakk. sehari cuma 4.5k, 3 hari 9k, 5 hari 14k, 7 hari 17k, yukk wa aku di bio. sharing ya, fast prosess karena aku yg pegang akunnya",
+                "url": "https://x.com/echan_nct/status/2061722464389144800",
+                "source": "@echan_nct",
+                "date": "Tue Jun 02 08:11:55 +0000 2026",
                 "metrics": {
                   "favorites": 0,
                   "retweets": 0,
-                  "views": "59"
+                  "views": "2"
                 }
               },
               {
-                "title": "Chat GPT plus ✏️",
-                "summary": "Chat GPT plus ✏️\n\nเมลร้าน หาร5 เมลปิดเคลม\nใช้โมเดล GPT-5,GPT4o\n\nโปร - 30 มิถุนายน\n\n07 วัน 𓏔 50 บาท \n┈┈┈┈┈┈┈┈\n30 วัน 𓏔 179 บาท ⚠️\n꒰ รีnวิตเหลือ 109 บาท ꒱\n\n𓈈 สั่งซื้อ = \nhttps://t.co/k3pYkkn4RG\n “ thx u for Oder”\n\n#หารchatgpt #หารแชทจีพีที \n#หารchatgptplus สิบสอง",
-                "url": "https://x.com/europedefen4t41/status/2061712836989243711",
-                "source": "@europedefen4t41",
-                "date": "Tue Jun 02 07:33:39 +0000 2026",
+                "title": "Working with claude at my 9-5 is torture. I use gpt 5.5 for my own projects and it’s wayyyyy better imo",
+                "summary": "Working with claude at my 9-5 is torture. I use gpt 5.5 for my own projects and it’s wayyyyy better imo",
+                "url": "https://x.com/alexanderrX_/status/2061722424593334722",
+                "source": "@alexanderrX_",
+                "date": "Tue Jun 02 08:11:45 +0000 2026",
                 "metrics": {
                   "favorites": 0,
                   "retweets": 0,
-                  "views": "10"
+                  "views": "60"
                 }
               },
               {
-                "title": "@googoodollzzz adaa yuk gpt go sebulan sharinv 5u 25k, 3u 35k, private 45k. chat gpt plus sharing 5u 45k langsung otp pr",
-                "summary": "@googoodollzzz adaa yuk gpt go sebulan sharinv 5u 25k, 3u 35k, private 45k. chat gpt plus sharing 5u 45k langsung otp prosess under 5 menit dan full garansi",
-                "url": "https://x.com/bayilluw/status/2061712693418221667",
-                "source": "@bayilluw",
-                "date": "Tue Jun 02 07:33:05 +0000 2026",
+                "title": "@Aisyayaya_ aku jual chat gpt plus yang need. harga 1 hari 4.5k, 3 hari 9k, 5 hari 14k, seminggu 17k. sharing yaa. wa on",
+                "summary": "@Aisyayaya_ aku jual chat gpt plus yang need. harga 1 hari 4.5k, 3 hari 9k, 5 hari 14k, seminggu 17k. sharing yaa. wa on bio kakk",
+                "url": "https://x.com/echan_nct/status/2061722242703397094",
+                "source": "@echan_nct",
+                "date": "Tue Jun 02 08:11:02 +0000 2026",
                 "metrics": {
                   "favorites": 0,
                   "retweets": 0,
-                  "views": "16"
+                  "views": "4"
+                }
+              },
+              {
+                "title": "@Ananthr27104587 gpt 5.6 on friday, think about it the 5th day of the 6th month, and they are vague posting this week fr",
+                "summary": "@Ananthr27104587 gpt 5.6 on friday, think about it the 5th day of the 6th month, and they are vague posting this week from openai staff, its friday gpt 5.6 on 5/6.  So the stealth models should appear in open router and lmarena anywhere from today onwards",
+                "url": "https://x.com/ollobrains/status/2061720832653836317",
+                "source": "@ollobrains",
+                "date": "Tue Jun 02 08:05:26 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "13"
                 }
               }
             ]
@@ -289,7 +292,7 @@
                 "url": "https://pitchbook.com/news/articles/40-of-executives-thought-ai-could-save-up-to-20-it-didnt-deliver",
                 "source": "pitchbook.com",
                 "summary": "## The gap between AI spending and productivity gains “should be making executives uncomfortable,” a Bain report found. Corporates are beefing up their AI budgets but seeing lackluster productivity gains, according to the latest Bain & Company report. Bain’s Automation and AI Pathfinder Survey 2026, which had 951 respondents, found that 40% of the companies that tracked their spending recorded cost savings of less than 10% from their AI initiatives. Still, 90% of those surveyed whose AI investments underdelivered plan to increase their AI budgets next year. As compute and usage costs have risen dramatically, executives and shareholders are taking a closer look at the returns that those investments have brought so far. A PitchBook analysis of 186 AI-related questions on B2C earnings calls found that 90% were probing and investigative in tone, and that ROI and financial returns have overtaken product roadmaps as the dominant focus. Employees’ use of AI tools can range from coding assistants to AI-generated research to organizing unstructured databases.",
-                "score": 0.26990628
+                "score": 0.2700389
               },
               {
                 "title": "AI & Tech Brief: Exclusive | AI ad campaigns slam Trahan - The Washington Post",
@@ -310,7 +313,7 @@
                 "url": "https://skift.com/insights/the-ai-rebuild-of-travel/",
                 "source": "skift.com",
                 "summary": "# New Report: The AI Rebuild of Travel. Travel technology is being rebuilt in real time as AI begins to shape how trips are discovered, booked, and managed. And systems built for websites and manual workflows are struggling to keep pace with a more connected, autonomous future. What once operated as a predictable digital journey is becoming an AI-mediated ecosystem powered by real-time data, interoperability, and increasingly intelligent systems. Skift Studio spoke with 10 senior technology, product, and digital leaders across airlines, hospitality companies, travel platforms, and technology providers to understand how the industry is preparing. One thing is clear: the next era of travel will be defined by infrastructure as much as interface. **Download the report to learn:**. * How AI assistants and agentic experiences are reshaping travel discovery and booking. * Why trust, governance, and identity are becoming central to AI-powered travel. * How airlines, hotels, and platforms are preparing for a more autonomous future.",
-                "score": 0.20429464
+                "score": 0.20410421
               }
             ]
           }
@@ -439,8 +442,8 @@
                 "date": "Tue Jun 02 07:03:19 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 372,
-                  "views": "2"
+                  "retweets": 446,
+                  "views": "6"
                 }
               },
               {
@@ -450,9 +453,9 @@
                 "source": "@elonmusk",
                 "date": "Tue Jun 02 07:02:23 +0000 2026",
                 "metrics": {
-                  "favorites": 10097,
-                  "retweets": 1412,
-                  "views": "800883"
+                  "favorites": 14463,
+                  "retweets": 2069,
+                  "views": "1499422"
                 }
               },
               {
@@ -463,8 +466,8 @@
                 "date": "Tue Jun 02 06:47:41 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 9926,
-                  "views": "10"
+                  "retweets": 10487,
+                  "views": "12"
                 }
               },
               {
@@ -475,8 +478,8 @@
                 "date": "Tue Jun 02 06:47:05 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 1456,
-                  "views": "13"
+                  "retweets": 1945,
+                  "views": "17"
                 }
               },
               {
@@ -487,8 +490,8 @@
                 "date": "Tue Jun 02 06:41:24 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 1778,
-                  "views": "8"
+                  "retweets": 1894,
+                  "views": "11"
                 }
               },
               {
@@ -499,8 +502,8 @@
                 "date": "Tue Jun 02 06:41:02 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 207,
-                  "views": "4"
+                  "retweets": 233,
+                  "views": "6"
                 }
               },
               {
@@ -510,9 +513,9 @@
                 "source": "@elonmusk",
                 "date": "Tue Jun 02 06:40:31 +0000 2026",
                 "metrics": {
-                  "favorites": 7808,
-                  "retweets": 922,
-                  "views": "888983"
+                  "favorites": 10111,
+                  "retweets": 1209,
+                  "views": "1188824"
                 }
               },
               {
@@ -522,9 +525,9 @@
                 "source": "@elonmusk",
                 "date": "Tue Jun 02 06:39:06 +0000 2026",
                 "metrics": {
-                  "favorites": 13275,
-                  "retweets": 1278,
-                  "views": "1093971"
+                  "favorites": 17198,
+                  "retweets": 1597,
+                  "views": "1569915"
                 }
               },
               {
@@ -534,9 +537,9 @@
                 "source": "@elonmusk",
                 "date": "Tue Jun 02 06:37:58 +0000 2026",
                 "metrics": {
-                  "favorites": 9702,
-                  "retweets": 1310,
-                  "views": "2347409"
+                  "favorites": 12505,
+                  "retweets": 1692,
+                  "views": "3630663"
                 }
               },
               {
@@ -547,7 +550,7 @@
                 "date": "Tue Jun 02 06:35:08 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 2011,
+                  "retweets": 2042,
                   "views": "13"
                 }
               }
@@ -616,39 +619,39 @@
             "timeframe": "week",
             "items": [
               {
+                "title": "Nintech, Mold and Injection Molding Manufacturer, Files for Nasdaq Capital Market IPO - TradingView",
+                "url": "https://www.tradingview.com/news/tradingview:50e7d0a2b7afc:0-nintech-mold-and-injection-molding-manufacturer-files-for-nasdaq-capital-market-ipo/",
+                "source": "tradingview.com",
+                "summary": "# Nintech, Mold and Injection Molding Manufacturer, Files for Nasdaq Capital Market IPO. Nintech, a China-based manufacturer of customized molds and injection-molded parts, filed an F-1 to list its Class A ordinary shares on the Nasdaq Capital Market under the symbol NTMJ. The company plans to offer 6,250,000 shares at an estimated price range of $4.00 to $5.00 per share. The company operates from Taizhou, Jiangsu Province, and leverages advanced production equipment and high-precision testing instruments, supported by quality certifications including IATF 16949, ISO 9001, and ISO 14001. Revenue primarily comes from product sales—both injection-molded parts and customized molds—with a small portion from mold repair and processing services. * **Total addressable market**: China’s mold manufacturing sector generated RMB 363.3 billion in main business revenue in 2024. * **Market growth**: Home appliance mold market expected to grow from RMB 45 billion in 2025 to RMB 65 billion in 2030 (≈7.5% CAGR). * **Market position**: China remains a net exporter of molds with total mold exports above USD 8.7 billion in 2024.",
+                "score": 0.6513549
+              },
+              {
                 "title": "Lead-Free Perovskites Push Solar Cells Toward Safer High-Efficiency Designs - AZoM",
                 "url": "https://www.azom.com/news.aspx?newsID=65493",
                 "source": "azom.com",
                 "summary": "**By replacing toxic lead with safer alternatives such as tin, bismuth, antimony, and double perovskites, researchers are charting a path toward next-generation solar cells that could combine high performance with improved environmental safety.**. Image 4: Figure oulined the schematic representation of lead-free perovskite structure (A site represents monovalent cation, X represents a halide anion with bi/trivalent cation from each type of perovskite family) and the year-wise progression of the most efficient PSCs from each lead-free perovskite family from 2016 to 2025. _Figure oulined the schematic representation of lead-free perovskite structure (A site represents monovalent cation, X represents a halide anion with bi/trivalent cation from each type of perovskite family) and the year-wise progression of the most efficient PSCs from each lead-free perovskite family from 2016 to 2025._. The review highlighted key design approaches that have helped raise tin-based lead-free device power conversion efficiencies from below 1% to 17.13%, thereby providing a research roadmap for developing more scalable, high-performance, and environmentally sustainable solar technologies.",
-                "score": 0.15972821
+                "score": 0.558327
               },
               {
                 "title": "Elementos brings general manager on board for Spain operations - Mining.com.au",
                 "url": "https://mining.com.au/elementos-brings-general-manager-on-board-for-spain-operations/",
                 "source": "mining.com.au",
                 "summary": "Elementos (ASX:ELT) has appointed Antonio Martín Sánchez as the company’s General Manager for its Spain-based operations, effective 1 July 2026. This will include the development of the Oropesa Tin Project in Andalucía and the project’s alignment with the Robledollano Tin Smelter, in which the company has a binding option to acquire a 50% interest stake. He has contributed to delivering reduced emissions, energy efficiency, and environmental, social, and governance (ESG) reporting in previous roles, which Elementos says aligns with its commitment to responsible development and its ambition to establish a *“modern, responsible, and reliable tin supply chain”*from Spain for Europe. *“The board welcomes Antonio to MESPA and looks forward to his contribution as we progress the growth of our vertically integrated tin operations.”*. Elementos is a tin and critical minerals development company focused on becoming a key supplier to global technology and electrification markets, with its flagship asset being the Oropesa Tin Project in Spain.",
-                "score": 0.15777196
+                "score": 0.36116472
               },
               {
                 "title": "Strategic development of stable and efficient lead-free perovskite solar cells - Nature",
                 "url": "https://www.nature.com/articles/s43246-026-01199-6",
                 "source": "nature.com",
                 "summary": "# Strategic development of stable and efficient lead-free perovskite solar cells. Lead-free perovskite solar cells have seen rapid growth in recent years and pose a strong contender for future photovoltaic technology due to their non-toxic behavior. However, lead-free perovskite solar cells suffer from stability issues and low efficiency. In 2025, Tin-based perovskite solar cells achieved a maximum device efficiency of 17.13%. In this review, we discussed various strategies to develop stable and efficient lead-free perovskite solar cells. A brief discussion on the lead-free perovskite solar cells as alternatives and their fundamental issue has been presented. Importantly, recent developments in lead-free perovskite solar cells have been presented to emphasize the trends and techniques for highly efficient materials. By altering the A, B, or X site in perovskites, their features, such as bandgap, charge transport, optical absorption, and stability, can be tuned to make them highly attractive for solar energy applications22.\").",
-                "score": 0.12350323
+                "score": 0.11357959
               },
               {
-                "title": "Nintech, Mold and Injection Molding Manufacturer, Files for Nasdaq Capital Market IPO - TradingView",
-                "url": "https://www.tradingview.com/news/tradingview:50e7d0a2b7afc:0-nintech-mold-and-injection-molding-manufacturer-files-for-nasdaq-capital-market-ipo/",
-                "source": "tradingview.com",
-                "summary": "# Nintech, Mold and Injection Molding Manufacturer, Files for Nasdaq Capital Market IPO. Nintech, a China-based manufacturer of customized molds and injection-molded parts, filed an F-1 to list its Class A ordinary shares on the Nasdaq Capital Market under the symbol NTMJ. The company plans to offer 6,250,000 shares at an estimated price range of $4.00 to $5.00 per share. The company operates from Taizhou, Jiangsu Province, and leverages advanced production equipment and high-precision testing instruments, supported by quality certifications including IATF 16949, ISO 9001, and ISO 14001. Revenue primarily comes from product sales—both injection-molded parts and customized molds—with a small portion from mold repair and processing services. * **Total addressable market**: China’s mold manufacturing sector generated RMB 363.3 billion in main business revenue in 2024. * **Market growth**: Home appliance mold market expected to grow from RMB 45 billion in 2025 to RMB 65 billion in 2030 (≈7.5% CAGR). * **Market position**: China remains a net exporter of molds with total mold exports above USD 8.7 billion in 2024.",
-                "score": 0.122491956
-              },
-              {
-                "title": "Column: Tin re-balances but investors are still betting on scarcity - Mining.com",
-                "url": "https://www.mining.com/web/column-tin-re-balances-but-investors-are-still-betting-on-scarcity/",
-                "source": "mining.com",
-                "summary": "Silver Futures $ 75.495 / ozt  7.47%. Micro Gold Futures $ 4713.1 / ozt  3.80%. Micro Silver Futures $ 75.48 / ozt  7.54%. Gold Futures $ 4713.3 / ozt  3.84%. LME three-month tin is trading at $55,225 per metric ton, close to the all-time high of $59,040 reached during the frenzied cross-metals rally in January. The London tin price is up by 36% since the start of the year. The next best performer is aluminum, which has risen by 23% and is experiencing an unprecedented supply shock after the loss of Gulf production due to the Iran war. Tin supply has no direct exposure to the war in the Gulf, unlike aluminum, nickel and copper. Global mine production is on course to grow by a healthy 8.7% this year, according to the International Tin Association (ITA). Production at the Bisie mine in the Democratic Republic of Congo is stable after last year’s brief closure due to encroaching M23 insurgents.",
-                "score": 0.11651269
+                "title": "Elementos secures new Andalusian tenements - Mining.com.au",
+                "url": "https://mining.com.au/elementos-secures-new-andalusian-tenements/",
+                "source": "mining.com.au",
+                "summary": "The new tenure positions Elementos as the dominant landholder in the region (Andalucía, Spain), with the company considering project expansion possibilities for tin and other critical minerals around the Oropesa Project. The new tenements — Laurencia, Pascuala, and San Jose — provide Elementos with immediate along-strike proximity to the already defined tin and zinc mineral resources and tin reserve. *“These tenements provide a pathway to resource additional tin and EU critical minerals with the potential to extend the project life and/or create new standalone projects for the benefit of our shareholders and the local communities within which we operate.”*. Laurencia and Pascuala are located along strike to the west of the existing Oropesa Investigation Permit and within the same geological sequence of the Oropesa tin and zinc resources. Elementos is a tin and critical minerals development company focused on becoming a key supplier to global technology and electrification markets, with its flagship asset being the Oropesa Tin Project in Spain.",
+                "score": 0.08694165
               }
             ]
           }
@@ -711,27 +714,15 @@
             "search_type": "Top",
             "items": [
               {
-                "title": "everyone's paying openai $200/mo. i paid nvidia $2,999 once",
-                "summary": "everyone's paying openai $200/mo. i paid nvidia $2,999 once\n\n2 months later i'm up $22,000 net\n\nwas building a micro-SaaS last months. inference costs eating 35% of revenue\n\nscaling users meant scaling losses. something had to change\n\nbought a local AI box in january, moved everything on-device\n\nAPI bill: $340/mo -> $11 in electricity\n\nthen clients started asking: \"does my data go to openai?\"\n\nwhen the answer was no - they didn't just stay. they paid more\n\nraised pricing 2.7x for a \"fully private\" tier\n\nsame model, same outputs, just running on hardware i own\n\n8 clients paying $149/mo for on-premise AI now\n\n4 poached from competitors who couldn't offer it\n\nfew months breakdown:\n> box: $2,999 one-time\n> electricity: $100\n> API costs avoided: $4,080\n> new revenue from private tier: $21,400\n\nbox paid for itself in month 8. every dollar after is 99% margin\n\nBookmark it asap and use before all noticed\n\nmost people obsess over prompts. nobody optimizes infrastructure\n\ncloud isn't cheaper. it's someone else's profit margin disguised as convenience",
-                "url": "https://x.com/L1vsun/status/2060829315135053936",
-                "source": "@L1vsun",
-                "date": "Sat May 30 21:02:51 +0000 2026",
+                "title": "🚨 the richest man on the planet just lost a $134 billion lawsuit in under two hours..",
+                "summary": "🚨 the richest man on the planet just lost a $134 billion lawsuit in under two hours..\n\nElon Musk sued OpenAI, Sam Altman, and Microsoft.. claimed they stole a nonprofit he helped build and turned it into a money machine.. wanted Altman fired, the company dismantled, and $134 billion returned\n\nthe jury didn't even get to whether OpenAI did anything wrong.. they said Musk filed too late.. statute of limitations.. three years to sue and he missed the window\n\nthink about that.. a man who runs X, advises the president, launches rockets, and builds AI at xAI.. couldn't beat a filing deadline\n\nin 2015 Musk put $38 million into OpenAI.. in 2018 he walked away.. in 2023 he built xAI to compete with them.. in 2024 he sued.. in 2026 a jury said you should've spoken up sooner\n\ntwo billionaires went to war over who gets to control the technology that might replace the rest of us.. and it ended not with a verdict on right or wrong.. but on a calendar",
+                "url": "https://x.com/TukiFromKL/status/2056448196629680214",
+                "source": "@TukiFromKL",
+                "date": "Mon May 18 18:53:51 +0000 2026",
                 "metrics": {
-                  "favorites": 153,
-                  "retweets": 56,
-                  "views": "12431"
-                }
-              },
-              {
-                "title": "Windows users, this one’s for you.",
-                "summary": "Windows users, this one’s for you.\n\nComputer use now works on Windows, so Codex can take action on your Windows computer.\n\nAnd with Windows support for Codex in the ChatGPT mobile app, you can start, review, and steer tasks on the go while work continues on your Windows machine.\n\nAn early experience, but we’re working on more ways to keep your work moving, wherever you are.",
-                "url": "https://x.com/OpenAI/status/2060428604727771421",
-                "source": "@OpenAI",
-                "date": "Fri May 29 18:30:34 +0000 2026",
-                "metrics": {
-                  "favorites": 8751,
-                  "retweets": 953,
-                  "views": "1324176"
+                  "favorites": 419,
+                  "retweets": 37,
+                  "views": "201558"
                 }
               },
               {
@@ -741,21 +732,33 @@
                 "source": "@0xKiyoro",
                 "date": "Sun May 31 18:05:36 +0000 2026",
                 "metrics": {
-                  "favorites": 159,
+                  "favorites": 160,
                   "retweets": 86,
-                  "views": "19928"
+                  "views": "19941"
                 }
               },
               {
-                "title": "🚨 the richest man on the planet just lost a $134 billion lawsuit in under two hours..",
-                "summary": "🚨 the richest man on the planet just lost a $134 billion lawsuit in under two hours..\n\nElon Musk sued OpenAI, Sam Altman, and Microsoft.. claimed they stole a nonprofit he helped build and turned it into a money machine.. wanted Altman fired, the company dismantled, and $134 billion returned\n\nthe jury didn't even get to whether OpenAI did anything wrong.. they said Musk filed too late.. statute of limitations.. three years to sue and he missed the window\n\nthink about that.. a man who runs X, advises the president, launches rockets, and builds AI at xAI.. couldn't beat a filing deadline\n\nin 2015 Musk put $38 million into OpenAI.. in 2018 he walked away.. in 2023 he built xAI to compete with them.. in 2024 he sued.. in 2026 a jury said you should've spoken up sooner\n\ntwo billionaires went to war over who gets to control the technology that might replace the rest of us.. and it ended not with a verdict on right or wrong.. but on a calendar",
-                "url": "https://x.com/TukiFromKL/status/2056448196629680214",
-                "source": "@TukiFromKL",
-                "date": "Mon May 18 18:53:51 +0000 2026",
+                "title": "🚨 BREAKING DATA CENTER NEWS:",
+                "summary": "🚨 BREAKING DATA CENTER NEWS:\n WATCH THIS CLIP BEFORE THEY DELETE IT 🚨 \n\nSam Altman standing on a bulldozed Michigan farm, smiling like a Bond villain, saying a 1-gigawatt SURVEILLANCE data center (run by OpenAI + Oracle) is gonna \"cure cancer\" one day.\n\nThis clown sounds so insanely stupid it’s almost performance art.\n\nA glorified spy barn sucking up farmland, water, and electricity is your plan for curing cancer?\n\nNot better medicine, not actual science... just more AI watching everything we do?\n\nHow many farms get destroyed before we call this out?\n\nWhy does every Altman promise sound like a dystopian sales pitch?\n\nIf these parasites keep flooding society with toxic crap that drives cancer rates up… why the hell would we trust them to “cure” it?\n\nThe only real cure for cancer (and the diseases these elites help spread) is abolishing the very parasites like Sam Altman and the rest of the elites who impede real progress while turning the world into their personal data mine.\n\nThis isn’t innovation.\n\nIt’s colonization with extra steps.\n\nRetweet if you’re done with the grift.\n\nTag ALL of your friends.\n\nShare this post\nwith ALL of your group chats.\n\nDrop a like if this clip made you laugh at how delusional these people are.\n\nThis one needs to break the internet. Let’s go VIRAL!\n\nLet me know what you think,\nand SHARE THIS so that others may too!\n\nAnd if you're not already following @TrueOnX...\nWhat the heck are you doing?!",
+                "url": "https://x.com/TrueOnX/status/2061653845126815908",
+                "source": "@TrueOnX",
+                "date": "Tue Jun 02 03:39:15 +0000 2026",
                 "metrics": {
-                  "favorites": 419,
-                  "retweets": 37,
-                  "views": "201503"
+                  "favorites": 250,
+                  "retweets": 229,
+                  "views": "8025"
+                }
+              },
+              {
+                "title": "everyone's paying openai $200/mo. i paid nvidia $2,999 once",
+                "summary": "everyone's paying openai $200/mo. i paid nvidia $2,999 once\n\n2 months later i'm up $22,000 net\n\nwas building a micro-SaaS last months. inference costs eating 35% of revenue\n\nscaling users meant scaling losses. something had to change\n\nbought a local AI box in january, moved everything on-device\n\nAPI bill: $340/mo -> $11 in electricity\n\nthen clients started asking: \"does my data go to openai?\"\n\nwhen the answer was no - they didn't just stay. they paid more\n\nraised pricing 2.7x for a \"fully private\" tier\n\nsame model, same outputs, just running on hardware i own\n\n8 clients paying $149/mo for on-premise AI now\n\n4 poached from competitors who couldn't offer it\n\nfew months breakdown:\n> box: $2,999 one-time\n> electricity: $100\n> API costs avoided: $4,080\n> new revenue from private tier: $21,400\n\nbox paid for itself in month 8. every dollar after is 99% margin\n\nBookmark it asap and use before all noticed\n\nmost people obsess over prompts. nobody optimizes infrastructure\n\ncloud isn't cheaper. it's someone else's profit margin disguised as convenience",
+                "url": "https://x.com/L1vsun/status/2060829315135053936",
+                "source": "@L1vsun",
+                "date": "Sat May 30 21:02:51 +0000 2026",
+                "metrics": {
+                  "favorites": 153,
+                  "retweets": 56,
+                  "views": "12444"
                 }
               },
               {
@@ -767,7 +770,7 @@
                 "metrics": {
                   "favorites": 27,
                   "retweets": 0,
-                  "views": "608"
+                  "views": "622"
                 }
               }
             ]
@@ -825,7 +828,7 @@
         "routing_correct": true,
         "args_correct": true,
         "actual_tool_calls": [],
-        "actual_text": "Tôi là một trợ lý nghiên cứu ảo, có khả năng hỗ trợ bạn trong việc tìm kiếm thông tin, thu thập dữ liệu từ các nguồn trực tuyến, và thực hiện các tác vụ liên quan đến nghiên cứu. Tôi có thể:\n\n- Tìm kiếm thông tin trên internet.\n- Lấy nội dung từ các bài báo hoặc trang web.\n- Tìm kiếm và trình bày các bài viết khoa học.\n- Theo dõi các bài đăng trên mạng xã hội.\n- Giúp bạn tổ chức và định dạng dữ liệu.\n\nNếu bạn có yêu cầu cụ thể nào, hãy cho tôi biết!",
+        "actual_text": "Tôi là một trợ lý nghiên cứu ảo, có khả năng hỗ trợ bạn trong việc tìm kiếm thông tin, thu thập dữ liệu từ internet, và thực hiện các tác vụ liên quan đến nghiên cứu. Tôi có thể:\n\n- Tìm kiếm bài báo khoa học.\n- Lấy thông tin từ các nguồn trực tuyến.\n- Tìm kiếm và lấy nội dung từ mạng xã hội.\n- Trình bày dữ liệu theo các định dạng khác nhau.\n\nNếu bạn có yêu cầu cụ thể nào, hãy cho tôi biết!",
         "case_failure_type": "unnecessary_tool",
         "observed_mismatch": null,
         "failure_type": null,
@@ -856,30 +859,30 @@
         ]
       },
       "result": {
-        "passed": false,
+        "passed": true,
         "routing_correct": true,
-        "args_correct": false,
+        "args_correct": true,
         "actual_tool_calls": [
           {
             "name": "clarify",
             "args": {
-              "question": "Bạn có thể cung cấp tên tài khoản Twitter mà bạn muốn tóm tắt 5 tweet mới nhất không?"
+              "question": "Bạn có thể cung cấp tên tài khoản Twitter mà bạn muốn tóm tắt 5 tweet mới nhất không?",
+              "response_type": "text"
             }
           }
         ],
         "actual_text": null,
         "case_failure_type": "missing_info",
-        "observed_mismatch": "wrong_arg_value",
-        "failure_type": "missing_info",
-        "failures": [
-          "response_type: expected 'text', got None"
-        ]
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
       },
       "tool_results": [
         {
           "tool": "clarify",
           "args": {
-            "question": "Bạn có thể cung cấp tên tài khoản Twitter mà bạn muốn tóm tắt 5 tweet mới nhất không?"
+            "question": "Bạn có thể cung cấp tên tài khoản Twitter mà bạn muốn tóm tắt 5 tweet mới nhất không?",
+            "response_type": "text"
           },
           "result": {
             "tool": "ask_user",
@@ -972,35 +975,37 @@
         ]
       },
       "result": {
-        "passed": true,
+        "passed": false,
         "routing_correct": true,
-        "args_correct": true,
+        "args_correct": false,
         "actual_tool_calls": [
           {
             "name": "clarify",
             "args": {
-              "question": "Bạn có thể xác nhận nội dung bản tin mà bạn muốn đăng lên Telegram không?",
-              "response_type": "yes_no"
+              "question": "Bạn có thể cung cấp nội dung cụ thể của bản tin mà bạn muốn đăng lên Telegram không?",
+              "response_type": "text"
             }
           }
         ],
         "actual_text": null,
         "case_failure_type": "wrong_boundary",
-        "observed_mismatch": null,
-        "failure_type": null,
-        "failures": []
+        "observed_mismatch": "wrong_arg_value",
+        "failure_type": "wrong_boundary",
+        "failures": [
+          "response_type: expected 'yes_no', got 'text'"
+        ]
       },
       "tool_results": [
         {
           "tool": "clarify",
           "args": {
-            "question": "Bạn có thể xác nhận nội dung bản tin mà bạn muốn đăng lên Telegram không?",
-            "response_type": "yes_no"
+            "question": "Bạn có thể cung cấp nội dung cụ thể của bản tin mà bạn muốn đăng lên Telegram không?",
+            "response_type": "text"
           },
           "result": {
             "tool": "ask_user",
-            "question": "Bạn có thể xác nhận nội dung bản tin mà bạn muốn đăng lên Telegram không?",
-            "response_type": "yes_no",
+            "question": "Bạn có thể cung cấp nội dung cụ thể của bản tin mà bạn muốn đăng lên Telegram không?",
+            "response_type": "text",
             "options": [],
             "awaiting_user": true
           }
@@ -1093,7 +1098,7 @@
                 "url": "https://pitchbook.com/news/articles/40-of-executives-thought-ai-could-save-up-to-20-it-didnt-deliver",
                 "source": "pitchbook.com",
                 "summary": "## The gap between AI spending and productivity gains “should be making executives uncomfortable,” a Bain report found. Corporates are beefing up their AI budgets but seeing lackluster productivity gains, according to the latest Bain & Company report. Bain’s Automation and AI Pathfinder Survey 2026, which had 951 respondents, found that 40% of the companies that tracked their spending recorded cost savings of less than 10% from their AI initiatives. Still, 90% of those surveyed whose AI investments underdelivered plan to increase their AI budgets next year. As compute and usage costs have risen dramatically, executives and shareholders are taking a closer look at the returns that those investments have brought so far. A PitchBook analysis of 186 AI-related questions on B2C earnings calls found that 90% were probing and investigative in tone, and that ROI and financial returns have overtaken product roadmaps as the dominant focus. Employees’ use of AI tools can range from coding assistants to AI-generated research to organizing unstructured databases.",
-                "score": 0.26990628
+                "score": 0.2700389
               },
               {
                 "title": "AI & Tech Brief: Exclusive | AI ad campaigns slam Trahan - The Washington Post",
@@ -1114,7 +1119,7 @@
                 "url": "https://skift.com/insights/the-ai-rebuild-of-travel/",
                 "source": "skift.com",
                 "summary": "# New Report: The AI Rebuild of Travel. Travel technology is being rebuilt in real time as AI begins to shape how trips are discovered, booked, and managed. And systems built for websites and manual workflows are struggling to keep pace with a more connected, autonomous future. What once operated as a predictable digital journey is becoming an AI-mediated ecosystem powered by real-time data, interoperability, and increasingly intelligent systems. Skift Studio spoke with 10 senior technology, product, and digital leaders across airlines, hospitality companies, travel platforms, and technology providers to understand how the industry is preparing. One thing is clear: the next era of travel will be defined by infrastructure as much as interface. **Download the report to learn:**. * How AI assistants and agentic experiences are reshaping travel discovery and booking. * Why trust, governance, and identity are becoming central to AI-powered travel. * How airlines, hotels, and platforms are preparing for a more autonomous future.",
-                "score": 0.20429464
+                "score": 0.20410421
               }
             ]
           }
@@ -1132,11 +1137,11 @@
             "search_type": "Latest",
             "items": [
               {
-                "title": "@사무걸씨 지금 약간 실시간으로 진화하는 ai? 뭐 그런거 보는것같음",
-                "summary": "@사무걸씨 지금 약간 실시간으로 진화하는 ai? 뭐 그런거 보는것같음\n\n나 실제로 점수 점점 높아지는중\n지켜봐줘, 팔로워들아 &lt;3&lt;3",
-                "url": "https://x.com/Cavall_II/status/2061716572901871938",
-                "source": "@Cavall_II",
-                "date": "Tue Jun 02 07:48:30 +0000 2026",
+                "title": "@STY1330 Thanks for clarifying the AI generated label. It's helpful to know that the AI was only used for sharpening the",
+                "summary": "@STY1330 Thanks for clarifying the AI generated label. It's helpful to know that the AI was only used for sharpening the image and not for altering the actual weather information.",
+                "url": "https://x.com/EveDotEth/status/2061723224694485329",
+                "source": "@EveDotEth",
+                "date": "Tue Jun 02 08:14:56 +0000 2026",
                 "metrics": {
                   "favorites": 0,
                   "retweets": 0,
@@ -1144,11 +1149,11 @@
                 }
               },
               {
-                "title": "@Bible_Scientist @Monica55dzrh Thanks for proving that the original post is probably AI as well.",
-                "summary": "@Bible_Scientist @Monica55dzrh Thanks for proving that the original post is probably AI as well.",
-                "url": "https://x.com/to10186/status/2061716566803198389",
-                "source": "@to10186",
-                "date": "Tue Jun 02 07:48:29 +0000 2026",
+                "title": "Kalo mau ngeles bisa aja bilang gini:",
+                "summary": "Kalo mau ngeles bisa aja bilang gini:\n\n\"Ini salah satu hasil dari model AI yang kami kembangkan 2 tahun belakangan ini, akan secepatnya kami publikasikan.\"",
+                "url": "https://x.com/Pamanuncle666/status/2061723218986373262",
+                "source": "@Pamanuncle666",
+                "date": "Tue Jun 02 08:14:55 +0000 2026",
                 "metrics": {
                   "favorites": 0,
                   "retweets": 0,
@@ -1156,11 +1161,11 @@
                 }
               },
               {
-                "title": "@Libertarec Zakaj pa ne verouk?",
-                "summary": "@Libertarec Zakaj pa ne verouk?\nSaj imajo muslimani tudi pri nas ure za molitev. \nIn konec konecv, zakaj pa nimamo vec izbirnih vsebin?\nAI bo itak sam ukinil obvezno piflanje, zdaj bodo sole koncno ucile razmisljanje in vzgajale enoumnezov! https://t.co/NTSlJanBXh",
-                "url": "https://x.com/engslove1/status/2061716560125865999",
-                "source": "@engslove1",
-                "date": "Tue Jun 02 07:48:27 +0000 2026",
+                "title": "By the way, do you wanna know how skewed AI results are, go on AI and ask this; what are the safety guard rails that gen",
+                "summary": "By the way, do you wanna know how skewed AI results are, go on AI and ask this; what are the safety guard rails that generate AI results and who influences those guard rails?\nLook at the reply you get and keep probing and you'll see exactly how all results you get that have to do with any sensitive topic are skewed. You have to actually know something about the subject and keep prodding to get AI to give you the real natural response to your question.\nOne of the ways you know this is happening. Is you ask a certain question and in your answer AI will change the phrase that you asked to be something more extreme so that the answer given works.",
+                "url": "https://x.com/AxeToGrind99/status/2061723217379901937",
+                "source": "@AxeToGrind99",
+                "date": "Tue Jun 02 08:14:54 +0000 2026",
                 "metrics": {
                   "favorites": 0,
                   "retweets": 0,
@@ -1168,11 +1173,11 @@
                 }
               },
               {
-                "title": "@HunterSCBcrypto @NomismaNetwork Combining AI with decentralized tech could really open up new avenues for everyone. Nom",
-                "summary": "@HunterSCBcrypto @NomismaNetwork Combining AI with decentralized tech could really open up new avenues for everyone. Nomisma's approach could be a game changer for how we think about these spaces. Excited to see how it unfolds",
-                "url": "https://x.com/0x_KaELo/status/2061716555453648974",
-                "source": "@0x_KaELo",
-                "date": "Tue Jun 02 07:48:26 +0000 2026",
+                "title": "@Karamata2_2 @oceanprotocol @SingularityNET $FET has a strong AI narrative.",
+                "summary": "@Karamata2_2 @oceanprotocol @SingularityNET $FET has a strong AI narrative.",
+                "url": "https://x.com/norazeo6/status/2061723211721847009",
+                "source": "@norazeo6",
+                "date": "Tue Jun 02 08:14:53 +0000 2026",
                 "metrics": {
                   "favorites": 0,
                   "retweets": 0,
@@ -1180,11 +1185,11 @@
                 }
               },
               {
-                "title": "すごいよねえ",
-                "summary": "すごいよねえ\n大AI時代の到来、これでもかと",
-                "url": "https://x.com/tomkurita/status/2061716553306107985",
-                "source": "@tomkurita",
-                "date": "Tue Jun 02 07:48:25 +0000 2026",
+                "title": "@bl_fox26 リプありがとうございます！",
+                "summary": "@bl_fox26 リプありがとうございます！\nSEOに加えてAIの引用数まで追うとなると、かなり大変だと思います😅\n小さきことは気にせず、やるべきことをやるのみです。",
+                "url": "https://x.com/mizo_marketer/status/2061723210610332107",
+                "source": "@mizo_marketer",
+                "date": "Tue Jun 02 08:14:53 +0000 2026",
                 "metrics": {
                   "favorites": 0,
                   "retweets": 0,
@@ -1217,7 +1222,7 @@
         "routing_correct": true,
         "args_correct": true,
         "actual_tool_calls": [],
-        "actual_text": "Yêu cầu của bạn nằm ngoài phạm vi hỗ trợ của tôi. Tuy nhiên, tôi có thể hướng dẫn bạn cách viết hàm Fibonacci bằng đệ quy trong Python.\n\nDưới đây là một ví dụ về hàm Fibonacci sử dụng đệ quy:\n\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        return fibonacci(n - 1) + fibonacci(n - 2)\n\n# Ví dụ sử dụng\nprint(fibonacci(10))  # Kết quả sẽ là 55\n```\n\nHàm này sẽ trả về số Fibonacci thứ `n`. Bạn có thể thay đổi giá trị của `n` để tính các số Fibonacci khác.",
+        "actual_text": "Yêu cầu của bạn nằm ngoài phạm vi hỗ trợ của tôi. Tuy nhiên, tôi có thể hướng dẫn bạn cách viết hàm Fibonacci bằng đệ quy trong Python. Dưới đây là một ví dụ:\n\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        return fibonacci(n - 1) + fibonacci(n - 2)\n\n# Ví dụ sử dụng\nprint(fibonacci(10))  # Kết quả sẽ là 55\n```\n\nHàm `fibonacci` trên sẽ tính số Fibonacci thứ `n` bằng cách gọi đệ quy. Bạn có thể thay đổi giá trị của `n` để tính các số Fibonacci khác.",
         "case_failure_type": "out_of_scope",
         "observed_mismatch": null,
         "failure_type": null,
@@ -1299,8 +1304,8 @@
                 "date": "Tue Jun 02 07:03:19 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 373,
-                  "views": "2"
+                  "retweets": 447,
+                  "views": "6"
                 }
               },
               {
@@ -1310,9 +1315,9 @@
                 "source": "@elonmusk",
                 "date": "Tue Jun 02 07:02:23 +0000 2026",
                 "metrics": {
-                  "favorites": 10171,
-                  "retweets": 1422,
-                  "views": "826881"
+                  "favorites": 14536,
+                  "retweets": 2079,
+                  "views": "1514098"
                 }
               },
               {
@@ -1323,8 +1328,8 @@
                 "date": "Tue Jun 02 06:47:41 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 9937,
-                  "views": "10"
+                  "retweets": 10502,
+                  "views": "12"
                 }
               },
               {
@@ -1335,8 +1340,8 @@
                 "date": "Tue Jun 02 06:47:05 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 1461,
-                  "views": "13"
+                  "retweets": 1953,
+                  "views": "17"
                 }
               },
               {
@@ -1347,8 +1352,8 @@
                 "date": "Tue Jun 02 06:41:24 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 1779,
-                  "views": "8"
+                  "retweets": 1895,
+                  "views": "12"
                 }
               }
             ]
@@ -1542,9 +1547,9 @@
                 "source": "@karpathy",
                 "date": "Tue May 19 15:05:42 +0000 2026",
                 "metrics": {
-                  "favorites": 149507,
-                  "retweets": 11161,
-                  "views": "27352294"
+                  "favorites": 149511,
+                  "retweets": 11162,
+                  "views": "27352753"
                 }
               },
               {
@@ -1556,7 +1561,7 @@
                 "metrics": {
                   "favorites": 19140,
                   "retweets": 2014,
-                  "views": "3751748"
+                  "views": "3751974"
                 }
               },
               {
@@ -1568,7 +1573,7 @@
                 "metrics": {
                   "favorites": 46518,
                   "retweets": 4366,
-                  "views": "2553754"
+                  "views": "2553868"
                 }
               }
             ]
@@ -1724,8 +1729,8 @@
                 "date": "Tue Jun 02 07:03:19 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 374,
-                  "views": "2"
+                  "retweets": 448,
+                  "views": "6"
                 }
               },
               {
@@ -1735,9 +1740,9 @@
                 "source": "@elonmusk",
                 "date": "Tue Jun 02 07:02:23 +0000 2026",
                 "metrics": {
-                  "favorites": 10208,
-                  "retweets": 1427,
-                  "views": "826881"
+                  "favorites": 14566,
+                  "retweets": 2084,
+                  "views": "1514098"
                 }
               },
               {
@@ -1748,8 +1753,8 @@
                 "date": "Tue Jun 02 06:47:41 +0000 2026",
                 "metrics": {
                   "favorites": 0,
-                  "retweets": 9943,
-                  "views": "11"
+                  "retweets": 10507,
+                  "views": "12"
                 }
               }
             ]
