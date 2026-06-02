@@ -1,0 +1,75 @@
+{
+  "transcript_id": "v0_openrouter_20260602T210901427138",
+  "version": "v0",
+  "artifact_version": "v0+pf0c107a9d7a1+t0f9196adad85",
+  "prompt_hash": "f0c107a9d7a14032c948d642d7c36f2a85cb6d69a099530093a874c94d472446",
+  "tools_hash": "0f9196adad85c6cf6f92907ffa2af40ecf5d1d493b7845e4b383ef73e03c17ea",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "/home/minhnq/Documents/Dev/VinAI/Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student/starter_v0/artifacts/system_prompt.md",
+  "tools": "/home/minhnq/Documents/Dev/VinAI/Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student/starter_v0/artifacts/tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-06-02T21:09:01",
+  "updated_at": "2026-06-02T21:09:42",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-06-02T21:09:10",
+      "user": "thời tiết hôm nay thế nào",
+      "status": "answered",
+      "assistant_text": "Thời tiết hôm nay ở Hà Nội là 29°C với độ ẩm 78%. Có khả năng có mưa rải rác gần khu vực.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "weather_reporter",
+              "args": {
+                "location": "Hanoi"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "weather_reporter",
+              "args": {
+                "location": "Hanoi"
+              },
+              "result": {
+                "tool": "weather_reporter",
+                "location": "Hanoi",
+                "temperature_C": "29°C",
+                "humidity": "78%",
+                "condition": "Patchy rain nearby"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Thời tiết hôm nay ở Hà Nội là 29°C với độ ẩm 78%. Có khả năng có mưa rải rác gần khu vực.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "weather_reporter",
+          "args": {
+            "location": "Hanoi"
+          },
+          "result": {
+            "tool": "weather_reporter",
+            "location": "Hanoi",
+            "temperature_C": "29°C",
+            "humidity": "78%",
+            "condition": "Patchy rain nearby"
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T21:09:24"
+    }
+  ]
+}

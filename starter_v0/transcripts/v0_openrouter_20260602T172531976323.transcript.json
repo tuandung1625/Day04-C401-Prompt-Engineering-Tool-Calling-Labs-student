@@ -1,0 +1,394 @@
+{
+  "transcript_id": "v0_openrouter_20260602T172531976323",
+  "version": "v0",
+  "artifact_version": "v0+p7e381e30dc36+t325e59ab2335",
+  "prompt_hash": "7e381e30dc3668d56044b57313e99aaa208844d63c1a922adaddda0f02cba14a",
+  "tools_hash": "325e59ab23352aef0247f62aa22aad76b7f2fed2eac476cb0d7c7a6d56a84a3c",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "/home/minhnq/Documents/Dev/VinAI/Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student/starter_v0/artifacts/system_prompt.md",
+  "tools": "/home/minhnq/Documents/Dev/VinAI/Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student/starter_v0/artifacts/tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-06-02T17:25:31",
+  "updated_at": "2026-06-02T17:41:18",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-06-02T17:26:26",
+      "user": "bạn có chức năng tóm tắt thông tin không",
+      "status": "answered",
+      "assistant_text": "Tôi có thể giúp bạn tóm tắt thông tin từ các nguồn như bài báo, nghiên cứu, hoặc nội dung trực tuyến. Bạn có thể cung cấp cho tôi một liên kết hoặc thông tin cụ thể mà bạn muốn tóm tắt không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Tôi có thể giúp bạn tóm tắt thông tin từ các nguồn như bài báo, nghiên cứu, hoặc nội dung trực tuyến. Bạn có thể cung cấp cho tôi một liên kết hoặc thông tin cụ thể mà bạn muốn tóm tắt không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-06-02T17:26:30"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-06-02T17:27:11",
+      "user": "tóm tắt bài báo Attention Is All You Need",
+      "status": "answered",
+      "assistant_text": "Tôi không tìm thấy bài báo \"Attention Is All You Need\" trong cơ sở dữ liệu hiện tại. Tuy nhiên, bài báo này là một công trình nổi tiếng trong lĩnh vực học sâu, giới thiệu mô hình Transformer, một kiến trúc mạng nơ-ron mới mà không cần sử dụng đến các cấu trúc tuần tự như RNN.\n\nNếu bạn cần thông tin cụ thể hơn hoặc một tóm tắt từ nguồn khác, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "Attention Is All You Need",
+                "max_results": 1
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "Attention Is All You Need",
+                "max_results": 1
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "Attention Is All You Need",
+                "api_query": "all:Attention AND all:Is AND all:All AND all:You AND all:Need",
+                "total_results": 0,
+                "items": [],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Tôi không tìm thấy bài báo \"Attention Is All You Need\" trong cơ sở dữ liệu hiện tại. Tuy nhiên, bài báo này là một công trình nổi tiếng trong lĩnh vực học sâu, giới thiệu mô hình Transformer, một kiến trúc mạng nơ-ron mới mà không cần sử dụng đến các cấu trúc tuần tự như RNN.\n\nNếu bạn cần thông tin cụ thể hơn hoặc một tóm tắt từ nguồn khác, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "Attention Is All You Need",
+            "max_results": 1
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "Attention Is All You Need",
+            "api_query": "all:Attention AND all:Is AND all:All AND all:You AND all:Need",
+            "total_results": 0,
+            "items": [],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T17:27:20"
+    },
+    {
+      "turn_index": 3,
+      "started_at": "2026-06-02T17:27:48",
+      "user": "tóm tắt bài báo theo link: https://arxiv.org/abs/1706.03762",
+      "status": "answered",
+      "assistant_text": "**Tóm tắt bài báo 'Attention Is All You Need'**\n\n- Các mô hình chuyển đổi chuỗi chính hiện nay dựa trên các mạng nơ-ron hồi tiếp hoặc tích chập phức tạp, bao gồm một bộ mã hóa và một bộ giải mã. Các mô hình hoạt động tốt nhất cũng kết nối bộ mã hóa và bộ giải mã thông qua một cơ chế chú ý. Chúng tôi đề xuất một kiến trúc mạng đơn giản mới, Transformer, hoàn toàn dựa trên các cơ chế chú ý, không sử dụng hồi tiếp và tích chập. Các thí nghiệm trên hai nhiệm vụ dịch máy cho thấy các mô hình này vượt trội về chất lượng, đồng thời có khả năng song song hóa tốt hơn và yêu cầu thời gian huấn luyện ít hơn đáng kể. Mô hình của chúng tôi đạt 28.4 BLEU trên nhiệm vụ dịch tiếng Anh sang tiếng Đức WMT 2014, cải thiện hơn 2 BLEU so với các kết quả tốt nhất hiện có, bao gồm cả các mô hình tập hợp. Trên nhiệm vụ dịch tiếng Anh sang tiếng Pháp WMT 2014, mô hình của chúng tôi thiết lập một điểm BLEU mới cho mô hình đơn 41.8 sau 3.5 ngày huấn luyện trên tám GPU, một phần nhỏ chi phí huấn luyện so với các mô hình tốt nhất trong tài liệu. Chúng tôi cho thấy Transformer có khả năng tổng quát tốt cho các nhiệm vụ khác bằng cách áp dụng thành công nó vào phân tích cấu trúc câu tiếng Anh với cả dữ liệu huấn luyện lớn và hạn chế.\n\n- [Xem bài báo gốc tại arxiv.org](https://arxiv.org/abs/1706.03762)",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "paper_text",
+              "args": {
+                "arxiv_url": "https://arxiv.org/abs/1706.03762",
+                "max_pages": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "paper_text",
+              "args": {
+                "arxiv_url": "https://arxiv.org/abs/1706.03762",
+                "max_pages": 5
+              },
+              "result": {
+                "tool": "get_arxiv_paper_text",
+                "arxiv_id": "1706.03762",
+                "url": "https://arxiv.org/abs/1706.03762",
+                "pdf_url": "https://arxiv.org/pdf/1706.03762.pdf",
+                "pdf_path": "/home/minhnq/Documents/Dev/VinAI/Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student/starter_v0/arxiv_papers/1706.03762.pdf",
+                "txt_path": "/home/minhnq/Documents/Dev/VinAI/Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student/starter_v0/arxiv_papers/1706.03762.txt",
+                "page_count": 15,
+                "pages_read": 5,
+                "chars_returned": 8000,
+                "items": [
+                  {
+                    "title": "arXiv paper 1706.03762",
+                    "url": "https://arxiv.org/abs/1706.03762",
+                    "source": "arxiv.org",
+                    "summary": "Provided proper attribution is provided, Google hereby grants permission to\nreproduce the tables and figures in this paper solely for use in journalistic or\nscholarly works.\nAttention Is All You Need\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\nNiki Parmar∗\nGoogle Research\nnikip@google.com\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\nLlion Jones∗\nGoogle Research\nllion@google.com\nAidan N. Gomez∗ †\nUniversity of Toronto\naidan@cs.toronto.edu\nŁukasz Kaiser ∗\nGoogle Brain\nlukaszkaiser@google.com\nIllia Polosukhin∗ ‡\nillia.polosukhin@gmail.com\nAbstract\nThe dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.\n∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.\n†Work performed while at Google Brain.\n‡Work performed while at Google Research.\n31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.\narXiv:1706.03762v7  [cs.CL]  2 Aug 2023\n\n1 Introduction\nRecurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks\nin particular, have been firmly established as state of the art approaches in sequence modeling and\ntransduction problems such as language modeling and machine translation [ 35, 2, 5]. Numerous\nefforts have since continued to push the boundaries of recurrent language models and encoder-decoder\narchitectures [38, 24, 15].\nRecurrent models typically factor computation along the symbol positions of the input and output\nsequences. Aligning the positions to steps in computation time, they generate a sequence of hidden\nstates ht, as a function of the previous hidden state ht−1 and the input for position t. This inherently\nsequential nature precludes parallelization within training examples, which becomes critical at longer\nsequence lengths, as memory constraints limit batching across examples. Recent work has achieved\nsignificant improvements in computational efficiency through factorization tricks [21] and conditional\ncomputation [32], while also improving model performance in case of the latter. The fundamental\nconstraint of sequential computation, however, remains.\nAttention mechanisms have become an integral part of compelling sequence modeling and transduc-\ntion models in various tasks, allowing modeling of dependencies without regard to their distance in\nthe input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms\nare used in conjunction with a recurrent network.\nIn this work we propose the Transformer, a model architecture eschewing recurrence and instead\nrelying entirely on an attention mechanism to draw global dependencies between input and output.\nThe Transformer allows for significantly more parallelization and can reach a new state of the art in\ntranslation quality after being trained for as little as twelve hours on eight P100 GPUs.\n2 Background\nThe goal of reducing sequential computation also forms the foundation of the Extended Neural GPU\n[16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building\nblock, computing hidden representations in parallel for all input and output positions. In these models,\nthe number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difficult to learn dependencies between distant positions [ 12]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 27, 28, 22].\nEnd-to-end memory networks are based on a recurrent attention mechanism instead of sequence-\naligned recurrence and have been shown to perform well on simple-language question answering and\nlanguage modeling tasks [34].\nTo the best of our knowledge, however, the Transformer is the first transduction model relying\nentirely on self-attention to compute representations of its input and output without using sequence-\naligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate\nself-attention and discuss its advantages over models such as [17, 18] and [9].\n3 Model Architecture\nMost competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35].\nHere, the encoder maps an input sequence of symbol representations (x1, ..., xn) to a sequence\nof continuous representations z = ( z1, ..., zn). Given z, the decoder then generates an output\nsequence (y1, ..., ym) of symbols one element at a time. At each step the model is auto-regressive\n[10], consuming the previously generated symbols as additional input when generating the next.\n2\n\nFigure 1: The Transformer - model architecture.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlaye"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "format",
+              "args": {
+                "items": [
+                  {
+                    "title": "Attention Is All You Need",
+                    "url": "https://arxiv.org/abs/1706.03762",
+                    "source": "arxiv.org",
+                    "summary": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data."
+                  }
+                ],
+                "template": "brief",
+                "headline": "Tóm tắt bài báo 'Attention Is All You Need'"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "format",
+              "args": {
+                "items": [
+                  {
+                    "title": "Attention Is All You Need",
+                    "url": "https://arxiv.org/abs/1706.03762",
+                    "source": "arxiv.org",
+                    "summary": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data."
+                  }
+                ],
+                "template": "brief",
+                "headline": "Tóm tắt bài báo 'Attention Is All You Need'"
+              },
+              "result": {
+                "tool": "render_digest",
+                "template": "brief",
+                "markdown": "**Tóm tắt bài báo 'Attention Is All You Need'**\n\n- The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network arch... - [arxiv.org](https://arxiv.org/abs/1706.03762)",
+                "item_count": 1
+              }
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "assistant_text": "**Tóm tắt bài báo 'Attention Is All You Need'**\n\n- Các mô hình chuyển đổi chuỗi chính hiện nay dựa trên các mạng nơ-ron hồi tiếp hoặc tích chập phức tạp, bao gồm một bộ mã hóa và một bộ giải mã. Các mô hình hoạt động tốt nhất cũng kết nối bộ mã hóa và bộ giải mã thông qua một cơ chế chú ý. Chúng tôi đề xuất một kiến trúc mạng đơn giản mới, Transformer, hoàn toàn dựa trên các cơ chế chú ý, không sử dụng hồi tiếp và tích chập. Các thí nghiệm trên hai nhiệm vụ dịch máy cho thấy các mô hình này vượt trội về chất lượng, đồng thời có khả năng song song hóa tốt hơn và yêu cầu thời gian huấn luyện ít hơn đáng kể. Mô hình của chúng tôi đạt 28.4 BLEU trên nhiệm vụ dịch tiếng Anh sang tiếng Đức WMT 2014, cải thiện hơn 2 BLEU so với các kết quả tốt nhất hiện có, bao gồm cả các mô hình tập hợp. Trên nhiệm vụ dịch tiếng Anh sang tiếng Pháp WMT 2014, mô hình của chúng tôi thiết lập một điểm BLEU mới cho mô hình đơn 41.8 sau 3.5 ngày huấn luyện trên tám GPU, một phần nhỏ chi phí huấn luyện so với các mô hình tốt nhất trong tài liệu. Chúng tôi cho thấy Transformer có khả năng tổng quát tốt cho các nhiệm vụ khác bằng cách áp dụng thành công nó vào phân tích cấu trúc câu tiếng Anh với cả dữ liệu huấn luyện lớn và hạn chế.\n\n- [Xem bài báo gốc tại arxiv.org](https://arxiv.org/abs/1706.03762)",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "paper_text",
+          "args": {
+            "arxiv_url": "https://arxiv.org/abs/1706.03762",
+            "max_pages": 5
+          },
+          "result": {
+            "tool": "get_arxiv_paper_text",
+            "arxiv_id": "1706.03762",
+            "url": "https://arxiv.org/abs/1706.03762",
+            "pdf_url": "https://arxiv.org/pdf/1706.03762.pdf",
+            "pdf_path": "/home/minhnq/Documents/Dev/VinAI/Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student/starter_v0/arxiv_papers/1706.03762.pdf",
+            "txt_path": "/home/minhnq/Documents/Dev/VinAI/Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student/starter_v0/arxiv_papers/1706.03762.txt",
+            "page_count": 15,
+            "pages_read": 5,
+            "chars_returned": 8000,
+            "items": [
+              {
+                "title": "arXiv paper 1706.03762",
+                "url": "https://arxiv.org/abs/1706.03762",
+                "source": "arxiv.org",
+                "summary": "Provided proper attribution is provided, Google hereby grants permission to\nreproduce the tables and figures in this paper solely for use in journalistic or\nscholarly works.\nAttention Is All You Need\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\nNiki Parmar∗\nGoogle Research\nnikip@google.com\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\nLlion Jones∗\nGoogle Research\nllion@google.com\nAidan N. Gomez∗ †\nUniversity of Toronto\naidan@cs.toronto.edu\nŁukasz Kaiser ∗\nGoogle Brain\nlukaszkaiser@google.com\nIllia Polosukhin∗ ‡\nillia.polosukhin@gmail.com\nAbstract\nThe dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.\n∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.\n†Work performed while at Google Brain.\n‡Work performed while at Google Research.\n31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.\narXiv:1706.03762v7  [cs.CL]  2 Aug 2023\n\n1 Introduction\nRecurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks\nin particular, have been firmly established as state of the art approaches in sequence modeling and\ntransduction problems such as language modeling and machine translation [ 35, 2, 5]. Numerous\nefforts have since continued to push the boundaries of recurrent language models and encoder-decoder\narchitectures [38, 24, 15].\nRecurrent models typically factor computation along the symbol positions of the input and output\nsequences. Aligning the positions to steps in computation time, they generate a sequence of hidden\nstates ht, as a function of the previous hidden state ht−1 and the input for position t. This inherently\nsequential nature precludes parallelization within training examples, which becomes critical at longer\nsequence lengths, as memory constraints limit batching across examples. Recent work has achieved\nsignificant improvements in computational efficiency through factorization tricks [21] and conditional\ncomputation [32], while also improving model performance in case of the latter. The fundamental\nconstraint of sequential computation, however, remains.\nAttention mechanisms have become an integral part of compelling sequence modeling and transduc-\ntion models in various tasks, allowing modeling of dependencies without regard to their distance in\nthe input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms\nare used in conjunction with a recurrent network.\nIn this work we propose the Transformer, a model architecture eschewing recurrence and instead\nrelying entirely on an attention mechanism to draw global dependencies between input and output.\nThe Transformer allows for significantly more parallelization and can reach a new state of the art in\ntranslation quality after being trained for as little as twelve hours on eight P100 GPUs.\n2 Background\nThe goal of reducing sequential computation also forms the foundation of the Extended Neural GPU\n[16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building\nblock, computing hidden representations in parallel for all input and output positions. In these models,\nthe number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difficult to learn dependencies between distant positions [ 12]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 27, 28, 22].\nEnd-to-end memory networks are based on a recurrent attention mechanism instead of sequence-\naligned recurrence and have been shown to perform well on simple-language question answering and\nlanguage modeling tasks [34].\nTo the best of our knowledge, however, the Transformer is the first transduction model relying\nentirely on self-attention to compute representations of its input and output without using sequence-\naligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate\nself-attention and discuss its advantages over models such as [17, 18] and [9].\n3 Model Architecture\nMost competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35].\nHere, the encoder maps an input sequence of symbol representations (x1, ..., xn) to a sequence\nof continuous representations z = ( z1, ..., zn). Given z, the decoder then generates an output\nsequence (y1, ..., ym) of symbols one element at a time. At each step the model is auto-regressive\n[10], consuming the previously generated symbols as additional input when generating the next.\n2\n\nFigure 1: The Transformer - model architecture.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlaye"
+              }
+            ]
+          }
+        },
+        {
+          "tool": "format",
+          "args": {
+            "items": [
+              {
+                "title": "Attention Is All You Need",
+                "url": "https://arxiv.org/abs/1706.03762",
+                "source": "arxiv.org",
+                "summary": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data."
+              }
+            ],
+            "template": "brief",
+            "headline": "Tóm tắt bài báo 'Attention Is All You Need'"
+          },
+          "result": {
+            "tool": "render_digest",
+            "template": "brief",
+            "markdown": "**Tóm tắt bài báo 'Attention Is All You Need'**\n\n- The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network arch... - [arxiv.org](https://arxiv.org/abs/1706.03762)",
+            "item_count": 1
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T17:28:37"
+    },
+    {
+      "turn_index": 4,
+      "started_at": "2026-06-02T17:32:56",
+      "user": "bạn biết nguyễn tuấn dũng huy chương đồng olympic toán sinh viên của USTH không",
+      "status": "answered",
+      "assistant_text": "Tôi không tìm thấy thông tin cụ thể về Nguyễn Tuấn Dũng, người đạt huy chương đồng Olympic Toán sinh viên của USTH. Tuy nhiên, có một số bài viết liên quan đến các thành tựu của sinh viên và nhà khoa học Việt Nam trên Instagram, nhưng không có thông tin chi tiết về Nguyễn Tuấn Dũng.\n\nNếu bạn có thêm thông tin hoặc yêu cầu cụ thể hơn, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "Nguyễn Tuấn Dũng huy chương đồng Olympic Toán sinh viên USTH"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "Nguyễn Tuấn Dũng huy chương đồng Olympic Toán sinh viên USTH"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "Nguyễn Tuấn Dũng huy chương đồng Olympic Toán sinh viên USTH",
+                "topic": "general",
+                "timeframe": "week",
+                "items": [
+                  {
+                    "title": "Phú Yên có một nhà khoa học xuất sắc - Instagram",
+                    "url": "https://www.instagram.com/p/DY_AoQCGCVH",
+                    "source": "instagram.com",
+                    "summary": "- Đạt giải nhất trong các cuộc thi Olympic toàn Liên bang Nga. - SV nước ngoài duy nhất có mặt trên bảng danh dự treo trước cổng trường Đại học Quốc gia về Công",
+                    "score": 0.052410122
+                  },
+                  {
+                    "title": "Tiến sĩ người Việt 39 tuổi nhận giải thưởng khoa học danh giá của Mỹ",
+                    "url": "https://www.instagram.com/p/DY8cVYHif0m",
+                    "source": "instagram.com",
+                    "summary": "Anh nhận bằng tiến sĩ Khoa học máy tính tại National University of Singapore, một trung tâm nghiên cứu AI hàng đầu châu Á. Sau khi hoàn thành chương trình tiến",
+                    "score": 0.052235804
+                  },
+                  {
+                    "title": "Tiến sĩ người Việt 39 tuổi nhận giải thưởng khoa học danh giá của ...",
+                    "url": "https://www.instagram.com/p/DY8elm4mKiJ",
+                    "source": "instagram.com",
+                    "summary": "Anh nhận bằng tiến sĩ Khoa học máy tính tại National University of Singapore, một trung tâm nghiên cứu AI hàng đầu châu Á. Sau khi hoàn thành chương trình tiến",
+                    "score": 0.0513153
+                  },
+                  {
+                    "title": "Diễn biến ngày đầu tiên thi lớp 10 ở TP HCM 2026",
+                    "url": "https://vnexpress.net/dien-bien-ngay-dau-tien-thi-lop-10-o-tp-hcm-2026-5080182.html",
+                    "source": "vnexpress.net",
+                    "summary": "Từ 6h, nhiều thí sinh đã được phụ huynh đưa đến điểm thi THCS Lê Văn Tám, phường Bình Thạnh, trong thời tiết mát mẻ - khoảng 26 độ C. Điểm thi này có khoảng 900 thí sinh, chủ yếu đến từ trường THCS Lê Văn Tám, Bình Lợi Trung. Ngay cổng trường, nhiều giáo viên chủ nhiệm lớp 9 cầm sẵn danh sách học sinh, đợi các em đến điểm danh và động viên. Sáng nay, thí sinh làm bài thi môn Văn trong 120 phút. Được thi tại \"sn nhà\", em Lại Nguyên Khang, THCS Lê Văn Tám, nói thoải mái vì đã ôn tập, luyện đề kỹ lưỡng suốt nhiều tháng qua. Cô cho hay để tránh học sinh ngủ quên, muộn giờ, một số thầy cô được phn công điểm danh ở những điểm thi có học sinh của trường. Dũng cho biết hồi hộp, lo lắng suốt mấy ngày qua vì sẽ làm chung đề với học sinh ở khu vực trung tm.",
+                    "score": 0.037796497
+                  },
+                  {
+                    "title": "🏆 HỘI ĐỒNG GIÁM KHẢO – NHỮNG NGƯỜI CẦM CÂN NẢY MỰC ...",
+                    "url": "https://www.instagram.com/p/DY1rAwMD6bd",
+                    "source": "instagram.com",
+                    "summary": "✓ Thỏa sức sáng tạo ✓ Lập trình và chế tạo robot thực chiến ✓ Chinh phục các thử thách công nghệ hiện đại ✓ Bứt phá giới hạn bản thân trong kỷ nguyên số 💥",
+                    "score": 0.03107619
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Tôi không tìm thấy thông tin cụ thể về Nguyễn Tuấn Dũng, người đạt huy chương đồng Olympic Toán sinh viên của USTH. Tuy nhiên, có một số bài viết liên quan đến các thành tựu của sinh viên và nhà khoa học Việt Nam trên Instagram, nhưng không có thông tin chi tiết về Nguyễn Tuấn Dũng.\n\nNếu bạn có thêm thông tin hoặc yêu cầu cụ thể hơn, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "Nguyễn Tuấn Dũng huy chương đồng Olympic Toán sinh viên USTH"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "Nguyễn Tuấn Dũng huy chương đồng Olympic Toán sinh viên USTH",
+            "topic": "general",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "Phú Yên có một nhà khoa học xuất sắc - Instagram",
+                "url": "https://www.instagram.com/p/DY_AoQCGCVH",
+                "source": "instagram.com",
+                "summary": "- Đạt giải nhất trong các cuộc thi Olympic toàn Liên bang Nga. - SV nước ngoài duy nhất có mặt trên bảng danh dự treo trước cổng trường Đại học Quốc gia về Công",
+                "score": 0.052410122
+              },
+              {
+                "title": "Tiến sĩ người Việt 39 tuổi nhận giải thưởng khoa học danh giá của Mỹ",
+                "url": "https://www.instagram.com/p/DY8cVYHif0m",
+                "source": "instagram.com",
+                "summary": "Anh nhận bằng tiến sĩ Khoa học máy tính tại National University of Singapore, một trung tâm nghiên cứu AI hàng đầu châu Á. Sau khi hoàn thành chương trình tiến",
+                "score": 0.052235804
+              },
+              {
+                "title": "Tiến sĩ người Việt 39 tuổi nhận giải thưởng khoa học danh giá của ...",
+                "url": "https://www.instagram.com/p/DY8elm4mKiJ",
+                "source": "instagram.com",
+                "summary": "Anh nhận bằng tiến sĩ Khoa học máy tính tại National University of Singapore, một trung tâm nghiên cứu AI hàng đầu châu Á. Sau khi hoàn thành chương trình tiến",
+                "score": 0.0513153
+              },
+              {
+                "title": "Diễn biến ngày đầu tiên thi lớp 10 ở TP HCM 2026",
+                "url": "https://vnexpress.net/dien-bien-ngay-dau-tien-thi-lop-10-o-tp-hcm-2026-5080182.html",
+                "source": "vnexpress.net",
+                "summary": "Từ 6h, nhiều thí sinh đã được phụ huynh đưa đến điểm thi THCS Lê Văn Tám, phường Bình Thạnh, trong thời tiết mát mẻ - khoảng 26 độ C. Điểm thi này có khoảng 900 thí sinh, chủ yếu đến từ trường THCS Lê Văn Tám, Bình Lợi Trung. Ngay cổng trường, nhiều giáo viên chủ nhiệm lớp 9 cầm sẵn danh sách học sinh, đợi các em đến điểm danh và động viên. Sáng nay, thí sinh làm bài thi môn Văn trong 120 phút. Được thi tại \"sn nhà\", em Lại Nguyên Khang, THCS Lê Văn Tám, nói thoải mái vì đã ôn tập, luyện đề kỹ lưỡng suốt nhiều tháng qua. Cô cho hay để tránh học sinh ngủ quên, muộn giờ, một số thầy cô được phn công điểm danh ở những điểm thi có học sinh của trường. Dũng cho biết hồi hộp, lo lắng suốt mấy ngày qua vì sẽ làm chung đề với học sinh ở khu vực trung tm.",
+                "score": 0.037796497
+              },
+              {
+                "title": "🏆 HỘI ĐỒNG GIÁM KHẢO – NHỮNG NGƯỜI CẦM CÂN NẢY MỰC ...",
+                "url": "https://www.instagram.com/p/DY1rAwMD6bd",
+                "source": "instagram.com",
+                "summary": "✓ Thỏa sức sáng tạo ✓ Lập trình và chế tạo robot thực chiến ✓ Chinh phục các thử thách công nghệ hiện đại ✓ Bứt phá giới hạn bản thân trong kỷ nguyên số 💥",
+                "score": 0.03107619
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T17:33:09"
+    },
+    {
+      "turn_index": 5,
+      "started_at": "2026-06-02T17:38:56",
+      "user": "tôi đang sử dụng model nào",
+      "status": "answered",
+      "assistant_text": "Bạn đang sử dụng một mô hình trợ lý nghiên cứu, được thiết kế để hỗ trợ tìm kiếm thông tin, tóm tắt, và thực hiện các tác vụ liên quan đến nghiên cứu. Nếu bạn cần biết thêm chi tiết về khả năng hoặc chức năng cụ thể, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Bạn đang sử dụng một mô hình trợ lý nghiên cứu, được thiết kế để hỗ trợ tìm kiếm thông tin, tóm tắt, và thực hiện các tác vụ liên quan đến nghiên cứu. Nếu bạn cần biết thêm chi tiết về khả năng hoặc chức năng cụ thể, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-06-02T17:38:59"
+    }
+  ]
+}

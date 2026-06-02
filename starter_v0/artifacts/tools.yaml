@@ -102,6 +102,32 @@ tools:
           description: Câu hỏi cụ thể hoặc yêu cầu phân tích bức ảnh.
       required:
         - image_url
+
+  - name: text_summarizer
+    description: Tóm tắt các đoạn văn bản dài hoặc bài báo nghiên cứu thành các ý chính ngắn gọn. Sử dụng khi người dùng cung cấp trực tiếp văn bản thô dài và yêu cầu rút gọn.
+    parameters:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Toàn bộ nội dung văn bản thô cần tóm tắt.
+        max_sentences:
+          type: integer
+          description: Số lượng câu tối đa cho bản tóm tắt.
+      required:
+        - text
+
+
+  - name: weather_reporter
+    description: Tra cứu tình hình thời tiết, nhiệt độ và độ ẩm hiện tại của một thành phố hoặc địa danh cụ thể theo thời gian thực.
+    parameters:
+      type: object
+      properties:
+        location:
+          type: string
+          description: Tên thành phố hoặc địa điểm bằng tiếng Anh hoặc tiếng Việt không dấu (ví dụ 'Hanoi', 'Danang').
+      required:
+        - location
   # ---------------- Bonus tools ----------------
   - name: send
     description: "Gửi một đoạn văn bản đi."
