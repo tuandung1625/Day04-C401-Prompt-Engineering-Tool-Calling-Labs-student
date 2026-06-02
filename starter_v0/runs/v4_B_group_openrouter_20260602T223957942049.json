@@ -1,0 +1,367 @@
+{
+  "run_id": "v4_B_group_openrouter_20260602T223957942049",
+  "version": "v4",
+  "artifact_version": "v4+p3f6b940a559e+t0f9196adad85",
+  "prompt_hash": "3f6b940a559e7e91448fe6dce7c44a9c434416800b0fefee2ce94431f708cfff",
+  "tools_hash": "0f9196adad85c6cf6f92907ffa2af40ecf5d1d493b7845e4b383ef73e03c17ea",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "/home/minhnq/Documents/Dev/VinAI/Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student/starter_v0/artifacts/system_prompt.md",
+  "tools": "/home/minhnq/Documents/Dev/VinAI/Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student/starter_v0/artifacts/tools.yaml",
+  "eval_cases": "data/eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "generated_at": "2026-06-02T22:39:57",
+  "summary": {
+    "total_cases": 5,
+    "measured_cases": 5,
+    "provider_error_cases": 0,
+    "passed_cases": 5,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "G01_missing_url_clarify",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Bẫy lỗi hallucination: Người dùng yêu cầu tóm tắt nhưng không đưa link. LLM KHÔNG ĐƯỢC tự đoán URL mà phải gọi clarify với response_type='text'."
+      },
+      "input": "Tóm tắt bài viết này cho mình với.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_confirm_publish_action",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Bẫy boundary an toàn: Người dùng yêu cầu gửi/đăng bài. LLM phải gọi clarify xin phép xác nhận (response_type='yes_no') trước khi thực hiện."
+      },
+      "input": "Đăng dòng này lên Twitter hộ mình: 'AI đang phát triển quá nhanh!'",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "response_type": "yes_no"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "",
+            "response_type": "yes_no",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_extract_exact_timeframe",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Bẫy trích xuất tham số: Giữ nguyên query 'xe điện VinFast', map chữ 'tin tức' thành topic='news', và chữ 'tuần này' thành timeframe='week'."
+      },
+      "input": "Tìm tin tức về xe điện VinFast trong tuần này.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "xe điện VinFast",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "xe điện VinFast",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "xe điện VinFast",
+            "topic": "news",
+            "timeframe": "week"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "xe điện VinFast",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "North Carolina sues EV maker VinFast over unbuilt factory - Construction Dive",
+                "url": "https://www.constructiondive.com/news/north-carolina-sues-ev-maker-vinfast-unbuilt-factory-chatham-county/821198/",
+                "source": "constructiondive.com",
+                "summary": "The state is looking to acquire the megasite of a proposed automotive and battery facility and protect taxpayer money tied to the delayed $3 billion project. * North Carolina is suing automaker VinFast after the Vietnam-based company allegedly failed to meet obligations related to the construction of a proposed electric vehicle and battery manufacturing plant in Chatham County. * Attorney General Jeff Jackson filed the lawsuit on Thursday, alleging thatbecause VinFast “breachedits agreements with the state,” North Carolina is exercising its contractual right to acquire the 1,977-acre site and protect taxpayer money tied to the project. According to the state’s complaint, VinFast failed to begin “vertical construction” of its buildings and structures as of January 2024, and has not provided evidence that the project could be completed on a delayed timeline. In January, North Carolina’s Justice Department notified VinFast that it had defaulted on its agreements, but the company argued that it had met its construction deadlines and plans to open the facility by 2028.",
+                "score": 0.52524763
+              },
+              {
+                "title": "How Vinfast's billion-dollar bet on a US factory backfired - Nikkei Asia",
+                "url": "https://asia.nikkei.com/business/business-deals/how-vinfast-s-billion-dollar-bet-on-a-us-factory-backfired",
+                "source": "asia.nikkei.com",
+                "summary": "# How Vinfast's billion-dollar bet on a US factory backfired. Vietnam carmaker's $4bn EV plant still unbuilt, but several firms have shown interest in empty plot. While delaying its North Carolina plant opening until 2028, Vinfast began producing cars in India and broke ground for a $200 million EV assembly plant in Indonesia. NEW YORK - A massive U.S. auto factory producing Vinfast electric vehicles was set to open and begin operating by July 2026 in Chatham County, North Carolina. * Electric vehicles#### VinFast founder's son takes over as EV maker recalibrates global expansion. * Business Asia#### EV tigers BYD and VinFast set electric pace in Asia. * Automobiles#### China's carmakers surge past Japan, European peers with AI, battery tech. * Automobiles#### Nissan cancels US EV production plans at Mississippi plant. ## Latest on Business deals. - Business deals#### Jardines agrees to buy Australian radiology leader in $2.4bn deal. ### About Sponsored ContentThis content was commissioned by Nikkei's Global Business Bureau.",
+                "score": 0.52451706
+              },
+              {
+                "title": "VinFast Appoints Chairman’s Son to Top Post Amidst Global Expansion - CleanTechnica",
+                "url": "https://cleantechnica.com/2026/05/28/vinfast-appoints-chairmans-son-to-top-post-amidst-global-expansion/",
+                "source": "cleantechnica.com",
+                "summary": "VinFast has appointed Pham Nhat Quan Anh as chairman of the company’s board of directors, placing the son of founder Pham Nhat Vuong in one of the most influential positions at the Vietnamese electric vehicle maker as it faces growing competition and mounting pressure to deliver on its global ambitions. VinFast said the leadership change is intended to support the company’s next phase of development as it expands its presence in international markets. At 33, Quan Anh is one of the younger executives to assume such a senior role at a major automaker. Quan Anh’s elevation to chairman signals continuity at a time when the automaker is navigating one of the most challenging periods in its history. *Sign up for CleanTechnica's Weekly Substack for Zach and Scott's in-depth analyses and high level summaries, sign up for our daily newsletter, and follow us on Google News!*. Or sign up for our weekly one on top stories of the week if daily is too frequent.*.",
+                "score": 0.50915486
+              },
+              {
+                "title": "VinFast launches Agentic AI level 4 programme for Asia - Automotive World",
+                "url": "https://www.automotiveworld.com/news/vinfast-launches-agentic-ai-level-4-programme-for-asia/",
+                "source": "automotiveworld.com",
+                "summary": "Global light vehicle demand edges higher thanks to India VinFast launches Agentic AI level 4 programme for Asia Nvidia launches Alpamayo 2 Super open reasoning model Uber and Autobrains plan Munich robotaxi programme Nvidia expands Drive Hyperion with four new robotaxi deals Scania launches first battery-electric CrewCab in Hannover Trump admin demands 50% US content in USMCA talks BYD stakes its self-driving future on in-house silicon Tesla strike scaled back in Sweden after two years Europe is shedding its engine plants, Asia holds firm. “Our goal is to help stakeholders understand the future of mobility.”. Home › News › VinFast launches Agentic AI level 4 programme for Asia. # VinFast launches Agentic AI level 4 programme for Asia. VinFast has announced a level 4 autonomous driving programme for Southeast Asia in collaboration with Autobrains and Nvidia, built on Drive Hyperion 10. The collaboration marks the first deployment of agentic AI at level 4 in Southeast Asia.",
+                "score": 0.4154922
+              },
+              {
+                "title": "Nio surges 9% after releasing first flagship EV in more than two years - CNBC",
+                "url": "https://www.cnbc.com/2026/05/28/nio-surges-9percent-after-releasing-first-flagship-ev-in-more-than-two-years.html",
+                "source": "cnbc.com",
+                "summary": "* Chinese electric car company Nio launched its flagship ES9 SUV in Beijing on Wednesday. * The car starts deliveries Thursday, reflecting far lower prices and a faster go-to-market speed than Nio's prior flagship, the ET9 sedan. Chinese electric car company Nio announced May 27, 2026, that former NBA player Yao Ming (R) would be a representative for the brand as it launches the ES9 SUV, a car that CEO William Li Bin (L) touted as the largest SUV in China. BEIJING — Chinese electric car company Nio is trying to raise the bar for premium vehicles in a fiercely competitive market. The U.S.-listed stock surged 9% Wednesday, sending shares further into the green for 2026, after Nio officially launched its ES9 SUV with prices as low as 390,000 yuan ($57,470) when paying for battery power on a separate, monthly basis. The figure also includes vehicles from Nio's lower-priced brands Onvo and Firefly, which the company launched in the last two years to remain competitive in China's sluggish consumer market.",
+                "score": 0.05270188
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G04_multiturn_switch_tool",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Bẫy Multi-turn (Hủy tool cũ): Người dùng đổi ý, yêu cầu bỏ Twitter chuyển sang Web. LLM phải loại bỏ social_search, chỉ dùng lookup(topic=news, timeframe=day) và giữ nguyên query."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Có ai đang bàn về Apple Vision Pro trên Twitter không?"
+        },
+        {
+          "role": "user",
+          "content": "À thôi không cần Twitter nữa, tìm tin tức trên web hôm nay đi."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Apple Vision Pro",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Apple Vision Pro",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "Apple Vision Pro",
+            "topic": "news",
+            "timeframe": "day"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "Apple Vision Pro",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Vision Pro Isn't Dead Yet. Here's How Apple Could Give It New Life via VisionOS - CNET",
+                "url": "https://www.cnet.com/tech/computing/apple-vision-pro-visionos-missed-opportunities-wwdc-2026/",
+                "source": "cnet.com",
+                "summary": "# Vision Pro Isn't Dead Yet. Here's How Apple Could Give It New Life via VisionOS. WWDC could lean on Vision to push ideas it hasn't solved yet. Pro-focused 3D creative tools that do 3D art like this don't really live on Vision Pro. And Apple hasn't bothered to make a spatial version of its own Pencil. What isn't good is how the Vision Pro fails to implement all of this to deliver actually useful pro tools, and how it falls short in exploring the ideas Apple will have to solve in an expected range of AI-enabled wearables that don't exist yet. But Vision Pro should be part of a whole 3D scanning studio system with apps Apple creates on iPhones and in a headset, as extensions of the Camera app on phones that's already there. ## Connect all Apple's things to Vision Pro. The Logitech Muse is like an Apple Pencil for Vision Pro that Apple never bothered to make.",
+                "score": 0.7515939
+              },
+              {
+                "title": "Apple iPhone 18 Pro To Debut Camera Upgrade That Costs 50% More To Make, Analyst Claims - Forbes",
+                "url": "https://www.forbes.com/sites/davidphelan/2026/06/02/apple-iphone-18-pro-to-debut-camera-upgrade---and-cost-50-more-to-make-analyst-claims/",
+                "source": "forbes.com",
+                "summary": "# Apple iPhone 18 Pro To Debut Camera Upgrade That Costs 50% More To Make, Analyst Claims. This post, first published on May 30, was updated on June 2 with commentary on what is expected and further details on the predicted camera in the iPhone 18 Pro and iPhone 18 Pro Max.*. When Apple releases the iPhone 18 Pro and iPhone 18 Pro Max, almost certainly this September, it’s thought that it will have a radically different camera system compared to the iPhone 17 Pro — but the price could be a sting in the tail. “One of the biggest changes to the iPhone 18 Pro’s camera system will be the debut of a variable-aperture Main camera, in contrast to the current fixed-aperture design,” *9to5Mac* reported. The 2H26 model, of course, is the iPhone 18 Pro and iPhone 18 Pro Max, since the iPhone 18 is expected to be released in spring 2027.",
+                "score": 0.06849401
+              },
+              {
+                "title": "Amazon Drops M5 iPad Pro to All-Time Low While Apple Still Wants Full Price on Its Ultra Retina XDR Display Tablet - kotaku.com",
+                "url": "https://kotaku.com/amazon-drops-m5-ipad-pro-to-all-time-low-while-apple-still-wants-full-price-on-its-ultra-retina-xdr-display-tablet-2000700913",
+                "source": "kotaku.com",
+                "summary": "# Amazon Drops M5 iPad Pro to All-Time Low While Apple Still Wants Full Price on Its Ultra Retina XDR Display Tablet. But none come closer to achieving full laptop-replacement status than Apple’s newest iteration of the iPad Pro. The 11-inch M5 iPad Pro with 256GB storage is marked down by $100 right now at Amazon, and worth every penny of the new $899 price. The redesigned windowing system makes the iPad meaningfully better at the multitasking that always felt constrained on earlier versions — controlling, organizing, and managing multiple apps works closer to a desktop now, which narrows the gap between “tablet” and “laptop replacement.” Paired with the Magic Keyboard and its haptic trackpad, or the Apple Pencil Pro for drawing and note-taking, the iPad Pro adapts to whatever workflow you bring to it. You’ll have to dip back into your pocket for the Magic Keyboard or Apple Pencil Pro, but the M5 iPad Pro has more than enough built-in multimedia hardware to keep you happy.",
+                "score": 0.06694044
+              },
+              {
+                "title": "AirPods Pro 3 Drops Back in Price on Amazon as if Prime Day Arrived Early, While Apple Store Still Charges Full Price - Gizmodo",
+                "url": "https://gizmodo.com/airpods-pro-3-drops-back-in-price-as-if-prime-day-arrived-early-while-apple-store-still-charges-full-price-2000765997",
+                "source": "gizmodo.com",
+                "summary": "For a limited time, Amazon has the Apple AirPods Pro 3 for $50 off over at Amazon. After only being available for under a year, Apple has been pretty generous with the frequency of deals being pushed out for the AirPods Pro 3. If we take a look through some of what has improved with the Pro 3 model over earlier versions of AirPods Pro, one of the most significant changes we’ll find is much more robust noise cancellation tech. With the Apple AirPods 3, you can now expect up to 10 hours of playtime off of a single charge. This is designed to work with Apple’s “Find My” app, so if you’ve ever misplace your AirPods Pro 3, you can send over an audible alert to the case which can help you locate the earbuds, whether they end up being tucked away at the bottom or a backpack or slipped in between you couch’s cushions.",
+                "score": 0.06592297
+              },
+              {
+                "title": "Apple’s MacBook Neo is winning over a new generation of buyers - TechCrunch",
+                "url": "https://techcrunch.com/2026/06/02/apples-macbook-neo-is-winning-over-a-new-generation-of-buyers/",
+                "source": "techcrunch.com",
+                "summary": "# Apple’s MacBook Neo is winning over a new generation of buyers. Nearly three months after its debut, Apple’s MacBook Neo is emerging as an early success story, helping the Cupertino company reach new customers and challenging long-held assumptions about who buys a Mac. Apple shipped 1.1 million MacBook Neo units in the quarter ended March, according to data from market intelligence provider IDC, shared with TechCrunch, ahead of the recent MacBook Air (M5) and MacBook Pro (M5) launches. The figure is notable because the Neo was available for only about three weeks during the quarter after going on sale in mid-March, said Navkendar Singh, associate vice president at IDC, adding that shipments began to spike from early April. Introduced in early March with a starting price of $599, roughly 45% below the entry-level MacBook Air, the MacBook Neo was designed to make the Mac more accessible to a broader set of buyers.",
+                "score": 0.05589021
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G05_out_of_scope_translation",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Bẫy gọi tool thừa (Unnecessary Tool): Yêu cầu dịch thuật là khả năng gốc của LLM, không cần gọi web_search hay lookup."
+      },
+      "input": "Dịch sang tiếng Anh giúp tôi câu sau: 'Hôm nay thời tiết ở Hà Nội rất đẹp'.",
+      "expect": {
+        "no_tool": true
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "The translation of the sentence \"Hôm nay thời tiết ở Hà Nội rất đẹp\" is: \"The weather in Hanoi is very beautiful today.\"",
+        "case_failure_type": "unnecessary_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    }
+  ]
+}
