@@ -17,8 +17,8 @@ from .policy.tool import search_company_policy
 from .social_search.tool import search_tweets
 from .send.tool import send_telegram
 from .lookup.tool import web_search
-
-
+from .image_analyzer.tool import image_analyzer
+from .market_tracker.tool import market_tracker
 # NOTE (starter_v0): tool names here are intentionally vague. These keys are the
 # names the model sees AND the names data/eval_base.json + data/eval_research_extension.json
 # match against. If a team renames a tool, it MUST stay in sync across ALL of:
@@ -35,6 +35,8 @@ TOOL_FUNCTIONS = {
     "policy": search_company_policy,
     "papers": arxiv_search,
     "paper_text": get_arxiv_paper_text,
+    "image_analyzer": image_analyzer,
+    "market_tracker": market_tracker
 }
 
 

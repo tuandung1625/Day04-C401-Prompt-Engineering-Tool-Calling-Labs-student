@@ -77,6 +77,31 @@ tools:
         headline: {type: string, default: "", description: "Tiêu đề"}
       required: [items, template]
 
+
+  - name: market_tracker
+    description: Tra cứu dữ liệu giá cổ phiếu, tiền tệ hoặc tiền điện tử theo thời gian thực (real-time). Rất phù hợp nếu Research Agent của bạn hướng tới việc nghiên cứu tin tức tài chính và xu hướng thị trường.
+    parameters:
+      type: object
+      properties:
+        symbol:
+          type: string
+          description: Mã chứng khoán, tiền tệ hoặc mã tiền điện tử cần tra cứu (ví dụ AAPL, TSLA, BTC-USD).
+      required:
+        - symbol
+
+  - name: image_analyzer
+    description: Phân tích và trích xuất thông tin từ một đường link hình ảnh (URL). Sử dụng công cụ này khi người dùng yêu cầu đọc biểu đồ, nhận diện vật thể, hoặc mô tả một bức ảnh cụ thể.
+    parameters:
+      type: object
+      properties:
+        image_url:
+          type: string
+          description: Đường dẫn URL trực tiếp đến hình ảnh (.jpg, .png).
+        query:
+          type: string
+          description: Câu hỏi cụ thể hoặc yêu cầu phân tích bức ảnh.
+      required:
+        - image_url
   # ---------------- Bonus tools ----------------
   - name: send
     description: "Gửi một đoạn văn bản đi."
