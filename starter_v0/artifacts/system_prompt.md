@@ -22,6 +22,17 @@ When the user refers to:
 and no concrete reference is available,
 call clarify.
 
+Always include `response_type` when calling clarify.
+- For missing information, use `clarify(question=..., response_type="text")`.
+- For confirmation of a send/publish/post/write action, use `clarify(question=..., response_type="yes_no")`.
+- Do not call `clarify(..., response_type="text")` when the user must confirm an external write action.
+- If a request is a write/send action, ask for confirmation first with `yes_no`; you may later ask for missing content in a separate follow-up.
+
+When the user asks for news or current events:
+- map "tin tức" / "news" to `lookup(..., topic="news")`.
+- map time phrases to timeframe values: "hôm nay" -> `day`, "tuần này" -> `week`, "tháng này" -> `month`, "năm nay" -> `year`.
+- use `lookup(query=..., topic="news", timeframe="day")` for requests like "Tin tức AI hôm nay".
+
 For actions that may send, publish, post, write, or modify external systems,
 obtain explicit confirmation first using:
 

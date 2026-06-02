@@ -20,6 +20,7 @@ from components.charts import (
     render_version_comparison,
     render_multiturn_chart,
 )
+from chat import run_model_tool_loop
 
 # ─── Page Config ───────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -398,8 +399,6 @@ with tab3:
         else:
             with st.spinner("🤖 Agent is working..."):
                 try:
-                    # Import agent
-                    from agent import ResearchAgent
                     from providers import make_provider
                     from tools import load_tool_declarations, to_openai_tools
 
@@ -409,39 +408,29 @@ with tab3:
                     openai_tools = to_openai_tools(tool_declarations)
                     provider_obj = make_provider(provider)
 
-                    # Create agent
-                    agent = ResearchAgent(
+                    # Run the model + tool loop so the app gets a final assistant response after tool execution.
+                    run = run_model_tool_loop(
                         provider=provider_obj,
-                        system_prompt=system_prompt,
+                        messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_query}],
                         tools=openai_tools,
                         model=model if model else None,
+                        max_tool_rounds=max_rounds,
                     )
 
-                    # Run
-                    messages = [{"role": "user", "content": user_query}]
-                    run = agent.run(messages)
-
-                    # Display results
                     st.success("✅ Agent execution completed")
 
-                    # Assistant text
-                    if run.text:
+                    if run.get("assistant_text"):
                         st.markdown("#### 💬 Assistant Response")
-                        st.info(run.text)
+                        st.info(run["assistant_text"])
 
-                    # Tool calls
-                    if run.tool_calls:
-                        st.markdown("#### 🔧 Tool Calls")
-                        for i, call in enumerate(run.tool_calls, 1):
-                            with st.expander(f"Call {i}: {call.name}"):
-                                st.json(call.args)
+                    if run.get("tool_events"):
+                        st.markdown("#### 🔧 Tool Events")
+                        for i, event in enumerate(run["tool_events"], 1):
+                            with st.expander(f"Event {i}: {event.get('tool', '?')}"):
+                                st.json(event)
 
-                    # Tool results
-                    if run.tool_results:
-                        st.markdown("#### 📦 Tool Results")
-                        for i, result in enumerate(run.tool_results, 1):
-                            with st.expander(f"Result {i}: {result.get('tool', '?')}"):
-                                st.json(result)
+                    if run.get("status") == "waiting_for_user":
+                        st.warning("Agent is waiting for user input to continue the tool loop.")
 
                 except Exception as e:
                     st.error(f"❌ Error: {str(e)}")
