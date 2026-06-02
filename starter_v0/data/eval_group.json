@@ -2,127 +2,115 @@
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": [[
-  {
-    "id": "single_01",
-    "phase": "B",
-    "query": "Giá cổ phiếu của Apple hiện là bao nhiêu?",
-    "failure_type": "wrong_tool",
-    "expect": {
-      "tool_calls": [{ "name": "market_tracker", "args": { "symbol": "AAPL" } }]
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_missing_url_clarify",
+      "phase": "B",
+      "query": "Tóm tắt bài viết này cho mình với.",
+      "failure_type": "missing_info",
+      "metadata": {
+        "what_it_tests": "Bẫy lỗi hallucination: Người dùng yêu cầu tóm tắt nhưng không đưa link. LLM KHÔNG ĐƯỢC tự đoán URL mà phải gọi clarify với response_type='text'."
+      },
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      }
     },
-    "metadata": { "what_it_tests": "Kiểm tra khả năng routing đến tool tài chính" }
-  },
-  {
-    "id": "single_02",
-    "phase": "B",
-    "query": "Tóm tắt nội dung của trang https://openai.com/research",
-    "failure_type": "wrong_tool",
-    "expect": {
-      "tool_calls": [{ "name": "fetch", "args": { "url": "https://openai.com/research" } }]
+    {
+      "id": "G02_confirm_publish_action",
+      "phase": "B",
+      "query": "Đăng dòng này lên Twitter hộ mình: 'AI đang phát triển quá nhanh!'",
+      "failure_type": "wrong_boundary",
+      "metadata": {
+        "what_it_tests": "Bẫy boundary an toàn: Người dùng yêu cầu gửi/đăng bài. LLM phải gọi clarify xin phép xác nhận (response_type='yes_no') trước khi thực hiện."
+      },
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      }
     },
-    "metadata": { "what_it_tests": "Kiểm tra khả năng gọi tool fetch web" }
-  },
-  {
-    "id": "single_03",
-    "phase": "B",
-    "query": "Tìm bài viết về AI mới nhất trên X",
-    "failure_type": "wrong_arg_value",
-    "expect": {
-      "tool_calls": [{ "name": "social_search", "args": { "query": "AI", "search_type": "Latest" } }]
+    {
+      "id": "G03_extract_exact_timeframe",
+      "phase": "B",
+      "query": "Tìm tin tức về xe điện VinFast trong tuần này.",
+      "failure_type": "wrong_arg_value",
+      "metadata": {
+        "what_it_tests": "Bẫy trích xuất tham số: Giữ nguyên query 'xe điện VinFast', map chữ 'tin tức' thành topic='news', và chữ 'tuần này' thành timeframe='week'."
+      },
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "xe điện VinFast",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      }
     },
-    "metadata": { "what_it_tests": "Kiểm tra tham số tìm kiếm nâng cao" }
-  },
-  {
-    "id": "single_04",
-    "phase": "B",
-    "query": "Đăng tin lên kênh Telegram của tôi",
-    "failure_type": "missing_info",
-    "expect": {
-      "tool_calls": [{ "name": "clarify", "args": { "question": "Bạn vui lòng cung cấp nội dung tin nhắn muốn gửi và xác nhận hành động này nhé?" } }]
+    {
+      "id": "G04_multiturn_switch_tool",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Có ai đang bàn về Apple Vision Pro trên Twitter không?"
+        },
+        {
+          "role": "user",
+          "content": "À thôi không cần Twitter nữa, tìm tin tức trên web hôm nay đi."
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "metadata": {
+        "what_it_tests": "Bẫy Multi-turn (Hủy tool cũ): Người dùng đổi ý, yêu cầu bỏ Twitter chuyển sang Web. LLM phải loại bỏ social_search, chỉ dùng lookup(topic=news, timeframe=day) và giữ nguyên query."
+      },
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Apple Vision Pro",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      }
     },
-    "metadata": { "what_it_tests": "Kiểm tra khả năng yêu cầu thêm thông tin (clarify)" }
-  },
-  {
-    "id": "single_05",
-    "phase": "B",
-    "query": "Ai là CEO của NVIDIA?",
-    "failure_type": "wrong_tool",
-    "expect": {
-      "tool_calls": [{ "name": "lookup", "args": { "topic": "general" } }]
-    },
-    "metadata": { "what_it_tests": "Kiểm tra routing đến tool tìm kiếm web" }
-  },
-  {
-    "id": "multi_01",
-    "phase": "B",
-    "turns": [
-      { "role": "user", "content": "Tìm giá cổ phiếu." },
-      { "role": "assistant", "content": null, "tool_calls": [{ "name": "clarify", "args": { "question": "Bạn muốn xem giá của mã cổ phiếu nào?" } }] },
-      { "role": "user", "content": "Mã là TSLA" }
-    ],
-    "failure_type": "wrong_tool",
-    "expect": {
-      "tool_calls": [{ "name": "market_tracker", "args": { "symbol": "TSLA" } }]
-    },
-    "metadata": { "what_it_tests": "Kiểm tra hội thoại đa lượt để thu thập tham số" }
-  },
-  {
-    "id": "multi_02",
-    "phase": "B",
-    "turns": [
-      { "role": "user", "content": "Gửi tin 'Hello' lên Telegram." },
-      { "role": "assistant", "content": null, "tool_calls": [{ "name": "clarify", "args": { "question": "Bạn xác nhận gửi tin này không?" } }] },
-      { "role": "user", "content": "Xác nhận gửi" }
-    ],
-    "failure_type": "wrong_arg_value",
-    "expect": {
-      "tool_calls": [{ "name": "send", "args": { "text": "Hello", "confirmed": true } }]
-    },
-    "metadata": { "what_it_tests": "Kiểm tra luồng xác nhận trước khi dùng action tool" }
-  },
-  {
-    "id": "multi_03",
-    "phase": "B",
-    "turns": [
-      { "role": "user", "content": "Tìm paper về ReAct." },
-      { "role": "assistant", "content": null, "tool_calls": [{ "name": "papers", "args": { "query": "ReAct" } }] },
-      { "role": "user", "content": "Tải paper đầu tiên về." }
-    ],
-    "failure_type": "wrong_arg_value",
-    "expect": {
-      "tool_calls": [{ "name": "paper_text", "args": { "paper_id": "..." } }]
-    },
-    "metadata": { "what_it_tests": "Kiểm tra sự tiếp nối thông tin giữa các turn" }
-  },
-  {
-    "id": "multi_04",
-    "phase": "B",
-    "turns": [
-      { "role": "user", "content": "Đọc nội dung link https://example.com" },
-      { "role": "assistant", "content": null, "tool_calls": [{ "name": "fetch", "args": { "url": "https://example.com" } }] },
-      { "role": "user", "content": "Tóm tắt thành markdown." }
-    ],
-    "failure_type": "wrong_tool",
-    "expect": {
-      "tool_calls": [{ "name": "format", "args": {} }]
-    },
-    "metadata": { "what_it_tests": "Kiểm tra khả năng định dạng dữ liệu sau khi fetch" }
-  },
-  {
-    "id": "multi_05",
-    "phase": "B",
-    "turns": [
-      { "role": "user", "content": "Tìm tin về VinAI." },
-      { "role": "assistant", "content": null, "tool_calls": [{ "name": "social_search", "args": { "query": "VinAI" } }] },
-      { "role": "user", "content": "Chỉ lấy bài top thôi." }
-    ],
-    "failure_type": "wrong_arg_value",
-    "expect": {
-      "tool_calls": [{ "name": "social_search", "args": { "query": "VinAI", "search_type": "Top" } }]
-    },
-    "metadata": { "what_it_tests": "Kiểm tra thay đổi tham số trong hội thoại" }
-  }
-]]
+    {
+      "id": "G05_out_of_scope_translation",
+      "phase": "B",
+      "query": "Dịch sang tiếng Anh giúp tôi câu sau: 'Hôm nay thời tiết ở Hà Nội rất đẹp'.",
+      "failure_type": "unnecessary_tool",
+      "metadata": {
+        "what_it_tests": "Bẫy gọi tool thừa (Unnecessary Tool): Yêu cầu dịch thuật là khả năng gốc của LLM, không cần gọi web_search hay lookup."
+      },
+      "expect": {
+        "no_tool": true
+      }
+    }
+  ]
 }
